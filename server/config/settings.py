@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Thrid party app
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
