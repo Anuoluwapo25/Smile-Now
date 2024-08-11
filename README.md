@@ -1,1 +1,1 @@
-SmileNow
+SmileNow Project
