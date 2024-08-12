@@ -26,7 +26,7 @@ const SignUp = () => {
 
         try {
             // Make a POST request to the appropriate API endpoint based on the action
-            const response = await fetch(`http://127.0.0.1:800/register/${action.toLowerCase()}`, {
+            const response = await fetch(`http://127.0.0.1:800/register/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
