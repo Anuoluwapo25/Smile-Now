@@ -87,6 +87,13 @@
   display: none; /* Hidden on desktop */
 }
 
+.btn-container {
+  display: flex;
+  justify-content: space-between; /* Adjust alignment */
+  gap: 10px; /* Adds space between the two buttons */
+  margin-right: 7px;
+}
+
 /* Media query for screens 960px wide or less */
 @media screen and (max-width: 960px) {
   /* Adjust positioning for smaller screens */

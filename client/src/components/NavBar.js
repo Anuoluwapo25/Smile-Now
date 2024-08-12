@@ -75,8 +75,26 @@ function Navbar() {
                         </li>
                     </ul>
                     {/* Display buttons only if the screen is large enough */}
-                    {button && <Button buttonStyle="btn--outline">SIGN UP</Button>}
-                    {button && <Button buttonStyle="btn--outline">LOG IN</Button>}
+                    {button && (
+                    <div className="btn-container">
+                        <div className="btn-wrapper">
+                            <Link to="/sign-up" className="btn-link">
+                                <Button route="/sign-up" buttonStyle="btn--outline" buttonSize="btn--large">
+                                    Sign Up
+                                </Button>
+                            </Link>
+                        </div>
+                        <div className="btn-wrapper">
+                            <Link to="/login" className="btn-link">
+                                <Button route="/log-in" buttonStyle="btn--outline" buttonSize="btn--medium">
+                                    Log In
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+)}
+
+
                 </div>
             </nav>
         </>

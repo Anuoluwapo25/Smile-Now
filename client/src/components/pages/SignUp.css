@@ -90,6 +90,7 @@
     gap: 30px; /* Space between buttons */
     margin: 60px; /* Margin around the container */
     align-items: center; /* Center buttons vertically */
+    justify-content: center;
 }
 
 /* Styling for submit buttons */
