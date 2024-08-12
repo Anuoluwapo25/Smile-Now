@@ -1,0 +1,181 @@
+/* Navbar container styling */
+.navbar {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%); /* Dark gradient background */
+  height: 80px; /* Fixed height for the navbar */
+  display: flex; /* Flexbox layout for horizontal alignment */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  font-size: 1.2rem; /* Font size for text inside the navbar */
+  position: sticky; /* Sticks the navbar at the top when scrolling */
+  top: 0; /* Position at the top of the viewport */
+  z-index: 999; /* High z-index to overlay other elements */
+}
+
+/* Container for all navbar items */
+.navbar-container {
+  display: flex; /* Flexbox layout */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  height: 80px; /* Match the navbar height */
+  max-width: 1500px; /* Maximum width of the container */
+}
+
+/* Styling for the logo in the navbar */
+.navbar-logo {
+  color: #fff; /* White text color */
+  justify-self: start; /* Align logo to the start (left) */
+  margin-left: 20px; /* Add some space on the left */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  text-decoration: none; /* Remove underline from the link */
+  font-size: 2rem; /* Larger font size for the logo */
+  display: flex; /* Flexbox layout for logo and icon */
+  align-items: center; /* Center the items vertically */
+}
+
+/* Styling for the icon next to the logo */
+.fa-typo3 {
+  margin-left: 0.5rem; /* Space between the logo text and icon */
+  font-size: 1.8rem; /* Slightly smaller icon size */
+}
+
+/* Layout for the navigation menu items */
+.nav-menu {
+  display: grid; /* Grid layout for menu items */
+  grid-template-columns: repeat(4, auto); /* Four columns, auto-width */
+  grid-gap: 10px; /* Space between the columns */
+  list-style: none; /* Remove default list styling */
+  text-align: center; /* Center-align text */
+  width: 60vw; /* Menu takes up 60% of the viewport width */
+  justify-content: end; /* Align the menu items to the right */
+  margin-right: 2rem; /* Space on the right */
+}
+
+/* Styling for each navigation item */
+.nav-item {
+  height: 80px; /* Match the height of the navbar */
+}
+
+/* Styling for the links inside the navbar */
+.nav-links {
+  color: #fff; /* White text color */
+  display: flex; /* Flexbox layout for alignment */
+  align-items: center; /* Center the link vertically */
+  text-decoration: none; /* Remove underline from links */
+  padding: 0.5rem 1rem; /* Padding inside the links */
+  height: 100%; /* Full height for the link item */
+}
+
+/* Hover effect for navigation links */
+.nav-links:hover {
+  border-bottom: 4px solid #fff; /* Underline effect on hover */
+  transition: all 0.2s ease-out; /* Smooth transition */
+}
+
+/* Styling for the mobile menu icon (hamburger) */
+.fa-bars {
+  color: #fff; /* White color for the icon */
+}
+
+/* Hide mobile-specific links by default */
+.nav-links-mobile {
+  display: none; /* Hidden on desktop */
+  margin-right: 10px; /* Space on the right */
+}
+
+/* Hide the menu icon by default */
+.menu-icon {
+  display: none; /* Hidden on desktop */
+}
+
+/* Media query for screens 960px wide or less */
+@media screen and (max-width: 960px) {
+  /* Adjust positioning for smaller screens */
+  .NavbarItems {
+    position: relative;
+  }
+
+  /* Mobile menu styling */
+  .nav-menu {
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Stack items vertically */
+    width: 100%; /* Full width */
+    height: 90vh; /* Nearly full height */
+    position: absolute; /* Positioned relative to navbar */
+    top: 80px; /* Start below the navbar */
+    left: -100%; /* Initially hidden off-screen */
+    opacity: 1; /* Fully visible */
+    transition: all 0.5s ease; /* Smooth transition */
+  }
+
+  /* Active state for the mobile menu */
+  .nav-menu.active {
+    background: #242222; /* Dark background for the mobile menu */
+    left: 0; /* Slide in from the left */
+    opacity: 1; /* Fully visible */
+    transition: all 0.5s ease; /* Smooth transition */
+    z-index: 1; /* Ensure it's on top of other content */
+  }
+
+  /* Styling for links in the mobile menu */
+  .nav-links {
+    text-align: center; /* Center-align text */
+    padding: 2rem; /* Larger padding for easier tapping */
+    width: 100%; /* Full width */
+    display: table; /* Table layout for centering */
+  }
+
+  /* Hover effect for mobile menu links */
+  .nav-links:hover {
+    background-color: #fff; /* White background on hover */
+    color: #242424; /* Dark text color on hover */
+    border-radius: 0; /* No border radius */
+  }
+
+  /* Adjust logo positioning for mobile */
+  .navbar-logo {
+    position: absolute; /* Position relative to navbar */
+    top: 0; /* Align at the top */
+    left: 0; /* Align to the left */
+    transform: translate(25%, 50%); /* Center the logo */
+  }
+
+  /* Display the menu icon on mobile */
+  .menu-icon {
+    display: block; /* Show the menu icon */
+    position: absolute; /* Position relative to navbar */
+    top: 0; /* Align at the top */
+    right: 0; /* Align to the right */
+    transform: translate(-100%, 60%); /* Adjust position */
+    font-size: 1.8rem; /* Size of the icon */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+
+  /* Styling for the close icon (X) in the mobile menu */
+  .fa-times {
+    color: #fff; /* White color for the icon */
+    font-size: 2rem; /* Larger size for the close icon */
+  }
+
+  /* Display mobile-specific links */
+  .nav-links-mobile {
+    display: block; /* Show on mobile */
+    text-align: center; /* Center-align text */
+    margin: 2rem auto; /* Center horizontally */
+    border-radius: 4px; /* Rounded corners */
+    width: 80%; /* Take up 80% of the screen width */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.5rem; /* Larger font size */
+    background-color: transparent; /* Transparent background */
+    color: #fff; /* White text color */
+    padding: 14px 20px; /* Padding for the link */
+    border: 5px; /* White border */
+    transition: all 0.3s ease-out; /* Smooth transition */
+  }
+
+  /* Hover effect for mobile-specific links */
+  .nav-links-mobile:hover {
+    background: #fff; /* White background on hover */
+    color: #242424; /* Dark text color on hover */
+    transition: 250ms; /* Smooth transition */
+  }
+}

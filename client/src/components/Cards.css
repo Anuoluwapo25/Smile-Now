@@ -1,0 +1,118 @@
+.cards {
+  padding: 4rem; /* Adds padding around the entire cards container */
+  background: #fff; /* Sets the background color to white */
+}
+
+h1 {
+  text-align: center; /* Centers the heading text */
+}
+
+.cards__container {
+  display: flex; /* Uses flexbox for layout */
+  flex-flow: column; /* Arranges items in a column */
+  align-items: center; /* Centers items horizontally */
+  max-width: 1120px; /* Sets a maximum width for the container */
+  width: 90%; /* Sets the width to 90% of the parent */
+  margin: 0 auto; /* Centers the container horizontally */
+}
+
+.cards__wrapper {
+  position: relative; /* Allows positioning of child elements */
+  margin: 50px 0 45px; /* Adds margin around the wrapper */
+}
+
+.cards__items {
+  margin-bottom: 24px; /* Adds space below each items list */
+}
+
+.cards__item {
+  display: flex; /* Uses flexbox for layout */
+  flex: 1; /* Allows the item to grow and fill the available space */
+  margin: 0 1rem; /* Adds horizontal margin around each item */
+  border-radius: 10px; /* Rounds the corners of the item */
+}
+
+.cards__item__link {
+  display: flex; /* Uses flexbox for layout */
+  flex-flow: column; /* Arranges child elements in a column */
+  width: 100%; /* Sets the link to fill the width of its container */
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17); /* Adds a shadow around the item */
+  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017)); /* Adds a shadow filter for WebKit browsers */
+  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017)); /* Adds a shadow filter */
+  border-radius: 10px; /* Rounds the corners of the link */
+  overflow: hidden; /* Hides overflow content */
+  text-decoration: none; /* Removes underline from the link */
+}
+
+.cards__item__pic-wrap {
+  position: relative; /* Allows positioning of child elements */
+  width: 100%; /* Sets the width to fill the container */
+  padding-top: 67%; /* Creates a responsive aspect ratio for the image container */
+  overflow: hidden; /* Hides overflow content */
+}
+
+.fade-img {
+  animation-name: fade-img; /* Applies the fade-img animation */
+  animation-duration: 2s; /* Sets the duration of the animation */
+}
+
+.cards__item__pic-wrap::after {
+  content: attr(data-category); /* Uses the data-category attribute for content */
+  position: absolute; /* Positions the element absolutely */
+  bottom: 0; /* Aligns to the bottom of the container */
+  margin-left: 10px; /* Adds margin to the left */
+  padding: 6px 8px; /* Adds padding around the content */
+  max-width: calc((100%) - 60px); /* Sets the maximum width, accounting for margin */
+  font-size: 12px; /* Sets the font size */
+  font-weight: 700; /* Makes the font bold */
+  color: #fff; /* Sets the text color to white */
+  background-color: #1f98f4; /* Sets the background color */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+.cards__item__img {
+  position: absolute; /* Positions the image absolutely within its container */
+  top: 0; /* Aligns to the top of the container */
+  right: 0; /* Aligns to the right of the container */
+  bottom: 0; /* Aligns to the bottom of the container */
+  left: 0; /* Aligns to the left of the container */
+  display: block; /* Makes the image a block-level element */
+  width: 100%; /* Sets the image width to fill the container */
+  max-width: 100%; /* Ensures the image does not exceed its container's width */
+  height: 100%; /* Sets the image height to fill the container */
+  max-height: 100%; /* Ensures the image does not exceed its container's height */
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+  transition: all 0.2s linear; /* Smooth transition for hover effects */
+}
+
+.cards__item__img:hover {
+  transform: scale(1.1); /* Scales the image on hover */
+}
+
+.cards__item__info {
+  padding: 20px 30px 30px; /* Adds padding around the item info */
+}
+
+.cards__item__text {
+  color: #252e48; /* Sets the text color */
+  font-size: 18px; /* Sets the font size */
+  line-height: 24px; /* Sets the line height */
+}
+
+@media only screen and (min-width: 1200px) {
+  .content__blog__container {
+    width: 84%; /* Sets the width for larger screens */
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cards__items {
+    display: flex; /* Arranges items in a row for larger screens */
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .cards__item {
+    margin-bottom: 2rem; /* Adds space below items for smaller screens */
+  }
+}
