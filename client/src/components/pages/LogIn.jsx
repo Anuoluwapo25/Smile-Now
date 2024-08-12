@@ -3,8 +3,6 @@ import "../../App.css"; // Import global styles
 import "./LogIn.css"; // Import styles specific to the LogIn component
 
 const LogIn = () => {
-    // State to track the current form action ("Log In" or "Sign Up")
-    const [action, setAction] = useState("Log In");
     // State to store the input values for email and password
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,7 +18,7 @@ const LogIn = () => {
         const payload = { email, password };
 
         try {
-            // Make a POST request to the appropriate API endpoint based on the action
+            // Make a POST request to the login API endpoint
             const response = await fetch(`http://127.0.0.1:800/login/`, {
                 method: 'POST',
                 headers: {
@@ -46,7 +44,7 @@ const LogIn = () => {
     return (
         <div className='container'> {/* Main container for the login form */}
             <div className='header'> {/* Header section containing the title */}
-                <div className='text'>{action}</div> {/* Display the current action ("Log In" or "Sign Up") */}
+                <div className='text'>Log In</div> {/* Display the "Log In" action */}
                 <div className="underline"></div> {/* Underline decoration under the header text */}
             </div>
             <div className='inputs'> {/* Container for the input fields */}
@@ -69,26 +67,17 @@ const LogIn = () => {
             </div>
             {/* Display an error message if one exists */}
             {error && <div className='error'>{error}</div>}
-            {/* Conditionally render the "Forgot Password" link based on the current action */}
-            {action === "Log In" && (
-                <div className='forgot-password'>
-                    Forgot Password? <span>Click here!</span> {/* Clickable "Forgot Password" text */}
-                </div>
-            )}
-            <div className='submit-container'> {/* Container for the submit button and action toggle */}
+            {/* Display the "Forgot Password" link */}
+            <div className='forgot-password'>
+                Forgot Password? <span>Click here!</span> {/* Clickable "Forgot Password" text */}
+            </div>
+            <div className='submit-container'> {/* Container for the submit button */}
                 {/* Button to handle form submission */}
                 <div
                     className='submit'
                     onClick={handleSubmit} // Trigger the form submission when clicked
                 >
-                    {action} {/* Display the current action ("Log In" or "Sign Up") */}
-                </div>
-                {/* Button to toggle between Log In and Sign Up modes */}
-                <div
-                    className='toggle-action'
-                    onClick={() => setAction(action === "Log In" ? "Sign Up" : "Log In")} // Toggle the action between "Log In" and "Sign Up"
-                >
-                    {action === "Log In" ? "Sign Up" : "Log In"}
+                    Log In {/* Display the "Log In" action */}
                 </div>
             </div>
         </div>
