@@ -18,13 +18,8 @@ const LogIn = () => {
         const payload = { email, password };
 
         try {
-<<<<<<< HEAD
-            // Make a POST request to the appropriate API endpoint based on the action
-            const response = await fetch(`http://127.0.0.1:8000/login/`, {
-=======
             // Make a POST request to the login API endpoint
-            const response = await fetch(`http://127.0.0.1:800/login/`, {
->>>>>>> 7bdf9b09e6809b61c760bd6a1fcbfe4198501af9
+            const response = await fetch(`http://127.0.0.1:8000/login/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

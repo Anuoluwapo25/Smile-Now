@@ -110,5 +110,6 @@
 /* Styling for the gray variant of the submit button */
 .gray {
     background: #eaeaea; /* Light gray background color */
-    color: #676767; /* Dark gray text color */
+    color: white; /* Dark gray text color */
+
 }

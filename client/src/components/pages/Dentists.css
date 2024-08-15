@@ -1,0 +1,82 @@
+.dentists {
+    padding: 20px;
+}
+
+.dentists__header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dentists__header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.dentists__header p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.dentists__container {
+    display: flex;
+    justify-content: space-between; /* Evenly spaces items */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 20px; /* Space between items */
+}
+
+.circle {
+    width: 350px; /* Circle diameter */
+    height: 350px; /* Circle diameter */
+    background: #4c6df2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: all 0.3s ease; /* Smooth transition */
+    position: relative; /* For positioning pseudo-elements */
+    text-align: center;
+}
+
+.circle:hover {
+    background: #3a4eb0; /* Darker background on hover */
+    transform: translateY(-10px); /* Lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+}
+
+.circle::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%; /* Pseudo-element to create a border effect */
+    height: 70%; /* Pseudo-element to create a border effect */
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.6); /* Semi-transparent border */
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.circle:hover::before {
+    border-color: #fff; /* White border on hover */
+}
+
+.icon {
+    font-size: 60px; /* Size of the icon */
+    color: #fff; /* White color for the icon */
+    z-index: 1; /* Ensure icon is above the pseudo-element */
+}
+
+.service__meta {
+    color: #fff;
+    margin-top: 10px;
+}
+
+.service__text {
+    font-size: 18px; /* Font size for text */
+    font-weight: 600;
+}
