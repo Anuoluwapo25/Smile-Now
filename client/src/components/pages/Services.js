@@ -3,6 +3,7 @@ import "../../App.css"
 import './Services.css';
 import Footer from "../Footer";
 import "../Footer.css"
+import { Link } from 'react-router-dom';
 
 function Serive ()  {
     return (
@@ -20,7 +21,7 @@ function Serive ()  {
             <div className="row">
 
 
-                    <div className="col__3">
+                    <Link to="/dentists" className="col__3">
                          <div className="service__box pointer">
                             <div className="icon">
                             <svg
@@ -51,9 +52,9 @@ function Serive ()  {
                                 </p>
                             </div>
                          </div>
-                    </div>
+                    </Link>
 
-                    <div className="col__3">
+                    <Link to ="/dentists" className="col__3">
                          <div className="service__box pointer">
                             <div className="icon">
                             <svg
@@ -79,9 +80,9 @@ function Serive ()  {
                                 </p>
                             </div>
                          </div>
-                    </div>
+                    </Link>
 
-                    <div className="col__3">
+                    <Link to="/dentists" className="col__3">
                          <div className="service__box pointer">
                             <div className="icon">
                             <svg
@@ -108,9 +109,9 @@ function Serive ()  {
                                 </p>
                             </div>
                          </div>
-                    </div>
+                    </Link>
 
-                    <div className="col__3">
+                    <Link to="/dentists" className="col__3">
                          <div className="service__box pointer">
                             <div className="icon">
                             <svg
@@ -142,9 +143,9 @@ function Serive ()  {
                                 </p>
                             </div>
                          </div>
-                    </div>
+                    </Link>
 
-                    <div className="col__3">
+                    <Link to="/dentists" className="col__3">
                          <div className="service__box pointer">
                             <div className="icon">
                             <svg
@@ -172,9 +173,9 @@ function Serive ()  {
                                 </p>
                             </div>
                          </div>
-                    </div>
+                    </Link>
 
-                    <div className="col__3">
+                    <Link to="/dentists" className="col__3">
                          <div className="service__box pointer">
                             <div className="icon">
                             <svg
@@ -201,7 +202,7 @@ function Serive ()  {
                                 </p>
                             </div>
                          </div>
-                    </div>
+                    </Link>
 
                 </div>
             </div>

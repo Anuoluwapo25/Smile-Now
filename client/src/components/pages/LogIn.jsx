@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import "../../App.css"; // Import global styles
 import "./LogIn.css"; // Import styles specific to the LogIn component
-
+import { useNavigate } from 'react-router-dom';
 const LogIn = () => {
     // State to store the input values for email and password
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     // State to store any error messages from the API
     const [error, setError] = useState("");
+
+    const navigate = useNavigate ();
 
     // Function to handle form submission
     const handleSubmit = async () => {
@@ -34,6 +36,8 @@ const LogIn = () => {
             const data = await response.json(); // Parse the JSON response
             console.log("Success:", data); // Log the successful response data to the console
             // Here, you can add additional logic to handle the response, such as saving a token or redirecting the user
+
+            navigate("/services")            
         } catch (error) {
             setError(error.message); // Set the error message to display to the user
             console.error("Error:", error); // Log the error to the console for debugging
