@@ -19,11 +19,6 @@ const SignUp = () => {
         const payload = { email, password, username };
 
         try {
-<<<<<<< HEAD
-            // Make a POST request to the appropriate API endpoint based on the action
-=======
-            // Make a POST request to the fixed API endpoint
->>>>>>> 7bdf9b09e6809b61c760bd6a1fcbfe4198501af9
             const response = await fetch(`http://127.0.0.1:8000/register/`, {
                 method: 'POST',
                 headers: {
