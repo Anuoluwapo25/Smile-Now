@@ -19,6 +19,7 @@
     border: 1px solid var(--primary); /* Border with the primary color */
 }
 
+
 /* Styles for the outline button */
 .btn--outline {
     background-color: transparent; /* Transparent background */

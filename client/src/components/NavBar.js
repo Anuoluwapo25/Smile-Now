@@ -58,8 +58,8 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/contact-us" className="nav-links" onClick={closeMobileMenu}>
-                                Contact Us
+                            <Link to="/dentists" className="nav-links" onClick={closeMobileMenu}>
+                                Book Now
                             </Link>
                         </li>
                         {/* Mobile-only links */}
