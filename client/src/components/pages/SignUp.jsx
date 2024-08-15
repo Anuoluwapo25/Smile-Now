@@ -9,7 +9,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const history = useNavigate(); // Initialize useHistory hook
+    const navigate = useNavigate(); // Initialize useHistory hook
 
     const handleSubmit = async () => {
         setError(""); // Clear any previous error messages
@@ -33,7 +33,7 @@ const SignUp = () => {
             console.log("Success:", data);
 
             // Navigate to the login page upon successful sign-up
-            history.push('/log-in');
+            navigate('/log-in');
         } catch (error) {
             setError(error.message); // Set the error message to display to the user
             console.error("Error:", error);
