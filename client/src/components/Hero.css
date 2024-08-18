@@ -1,0 +1,24 @@
+.hero-sec{
+    width: 100%;
+    background: -webkit-linear-gradient(rgba(32, 33, 44, 0.4), rgba(149, 180, 180, 0.4)), url("../images/hero/4.jpg") ;
+    background-position:right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: left;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.hero-sec h2{
+    font-size:70px;
+    width: 600px;
+    text-align: center;
+    padding: 80px 40px;
+    color: #ffffff;
+    margin-bottom: -45px;
+}
+
+.home-btn{
+    margin:200px;
+    font-weight: 400;
+}

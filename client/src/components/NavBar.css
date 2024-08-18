@@ -1,6 +1,6 @@
 /* Navbar container styling */
 .navbar {
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%); /* Dark gradient background */
+  background: linear-gradient(90deg, rgb(5, 138, 240) 0%, rgb(26, 23, 23) 100%); /* Dark gradient background */
   height: 80px; /* Fixed height for the navbar */
   display: flex; /* Flexbox layout for horizontal alignment */
   justify-content: center; /* Center the content horizontally */
@@ -116,7 +116,7 @@
 
   /* Active state for the mobile menu */
   .nav-menu.active {
-    background: #242222; /* Dark background for the mobile menu */
+    background: #09131d; /* Dark background for the mobile menu */
     left: 0; /* Slide in from the left */
     opacity: 1; /* Fully visible */
     transition: all 0.5s ease; /* Smooth transition */

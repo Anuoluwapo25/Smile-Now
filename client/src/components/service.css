@@ -4,6 +4,7 @@ h1.heading {
     font-weight: 700;
     font-family: Poppins, sans-serif;
     margin-bottom: 10px;
+    color:#5c606e;
  }
 
  p.heading.p__color {
@@ -88,7 +89,7 @@ h1.heading {
 }
 
 .dentist-cleaning{
-   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../../images/service/dental_cleaning.jpg");
+   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../images/service/dental_cleaning.jpg");
    background-position: center;
 }
 
@@ -104,54 +105,54 @@ h1.heading {
 }
 
 .whiten{ 
-   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../../images/service/whiten.jpg");
+   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../images/service/whiten.jpg");
    background-position: center;
 }
 .whiten:hover{ 
    transform: translateY(4px);
-   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../../images/service/whiten.jpg");
+   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../images/service/whiten.jpg");
   background-position: center;
 }
 .filling{ 
-   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../../images/service/fill.jpg");
+   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../images/service/fill.jpg");
    background-position: center;
 }
 .whiten:hover{ 
    transform: translateY(4px);
-   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../../images/service/fill.jpg");
+   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../images/service/fill.jpg");
    background-position: center;
 }
 
 .brace{ 
-   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../../images/service/brice.jpg");
+   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../images/service/brice.jpg");
    background-position: center;
 }
 
 .brace:hover{ 
    transform: translateY(4px);
-   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../../images/service/brice.jpg");
+   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../images/service/brice.jpg");
    background-position: center;
 }
 
 .brige{ 
-   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../../images/service/dental_bridge.jpg");
+   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../images/service/dental_bridge.jpg");
    background-position: center;
 }
 
 .brige:hover{ 
    transform: translateY(4px);
-   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../../images/service/dental_bridge.jpg");
+   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../images/service/dental_bridge.jpg");
    background-position: center;
 }
 
 
 .root-canal{ 
-   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../../images/service/dental_bridge.jpg");
+   background: -webkit-linear-gradient(rgba(31, 50, 255, 0.4), rgba(0, 174, 255, 0.4)), url("../images/service/dental_bridge.jpg");
    background-position: center;
 }
 
 .root-canal:hover{ 
    transform: translateY(4px);
-   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../../images/service/dental_bridge.jpg");
+   background: -webkit-linear-gradient(rgba(29, 38, 113, 0.8), rgba(0, 174, 255, 0.8)), url("../images/service/dental_bridge.jpg");
    background-position: center;
 }
