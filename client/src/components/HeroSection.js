@@ -2,6 +2,7 @@ import React from 'react'; // Import React library for building components
 import "../App.css"; // Import global styles
 import { Button } from './Button'; // Import the Button component
 import "./HeroSection.css"; // Import specific styles for the HeroSection component
+import { Link } from 'react-router-dom';
 
 // Define and export the HeroSection component
 function HeroSection() {
@@ -18,22 +19,12 @@ function HeroSection() {
         
         <div className='hero-btns'> {/* Container for the buttons */}
             {/* First button */}
-            <Button 
-                className="btns" /* Custom class for styling */
-                buttonStyle="btn--outline" /* Style variant for the button (outline style) */
-                buttonSize="btn--large" /* Size variant for the button (large size) */
-            >
-                GET STARTED {/* Button text */}
-            </Button>
+            <Link to='sign-up' className='home-btn'>
+                GET STARTED 
+            </Link>
             
             {/* Second button */}
-            <Button 
-                className="btns" /* Custom class for styling */
-                buttonStyle="btn--primary" /* Style variant for the button (primary style) */
-                buttonSize="btn--large" /* Size variant for the button (large size) */
-            >
-                Watch This <i className='far fa-play-circle' /> {/* Button text with an icon */}
-            </Button>
+            
         </div>
     </div>
   )

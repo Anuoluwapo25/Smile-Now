@@ -1,15 +1,21 @@
 import React from "react"
 import "../../App.css"
 import HeroSection from "../HeroSection"
-import Cards from "../Cards";
 import Footer from "../Footer"
+import Dentist from './Dentists'
+import Service from '../Service'
+import Hero from "../Hero"
 
 function Home () {
     return (
         <>
-        <HeroSection />
-        <Cards />
+        {/* <HeroSection /> */}
+        <Hero/>
+        {/* <Cards /> */}
+        <Service/>
+        <Dentist/>
         <Footer />
+
         </>
     );
 }

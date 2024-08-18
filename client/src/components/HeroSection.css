@@ -50,6 +50,18 @@ img {
   margin-left: 4px; /* Adds left margin to space the icon from the text */
 }
 
+.home-btn{
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+}
+
+.home-btn:hover{
+  opacity: 0.9;
+}
+
+
 /* Responsive styles for screens with a maximum width of 960px */
 @media screen and (max-width: 960px) {
   .hero-container > h1 {
@@ -78,3 +90,5 @@ img {
       width: 100%; /* Makes buttons full-width for better mobile display */
   }
 }
+
+

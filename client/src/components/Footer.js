@@ -6,26 +6,6 @@ import { Link } from 'react-router-dom'; // Import Link for client-side routing
 function Footer() {
   return (
     <div className='footer-container'> {/* Main container for the footer */}
-      <section className='footer-book_appointment'> {/* Section for booking appointments */}
-        <p className='footer-book_appointment-heading'>
-          BOOK APPOINTMENT
-        </p>
-        <p className='footer-book_appointment-text'>
-          You can cancel your appointment at any time.
-        </p>
-        <div className='input-areas'> {/* Container for the input form */}
-          <form>
-            <input
-              className='footer-input'
-              name='email'
-              type='email'
-              placeholder='Enter your email'
-            />
-            {/* Button to submit the form */}
-            <Button buttonStyle='btn--outline'>BOOK NOW</Button>
-          </form>
-        </div>
-      </section>
       <div className='footer-links'> {/* Container for footer links */}
         <div className='footer-link-wrapper'> {/* Wrapper for grouped footer links */}
           <div className='footer-link-items'> {/* Section for 'About Us' links */}

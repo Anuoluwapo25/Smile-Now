@@ -1,5 +1,5 @@
 .dentists {
-    padding: 20px;
+    padding: 70px;
 }
 
 .dentists__header {
@@ -29,40 +29,41 @@
 }
 
 .circle {
-    width: 350px; /* Circle diameter */
-    height: 350px; /* Circle diameter */
-    background: #4c6df2;
+    width: 300px; /* Circle diameter */
+    height: 300px; /* Circle diameter */
+    background: #05070f;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Shadow effect*/
     transition: all 0.3s ease; /* Smooth transition */
     position: relative; /* For positioning pseudo-elements */
     text-align: center;
 }
 
-.circle:hover {
-    background: #3a4eb0; /* Darker background on hover */
-    transform: translateY(-10px); /* Lift effect */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+.first-dentist{
+    background-image:url("../../images/dentists/1.jpg");
+    background-position: right;
+}
+.second-dentist{
+    background-image:url("../../images/dentists/2.jpg");
+    background-position:center;
+    background-size: cover;
+}
+.third-dentist{
+    background-image:url("../../images/dentists/3.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
-.circle::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 70%; /* Pseudo-element to create a border effect */
-    height: 70%; /* Pseudo-element to create a border effect */
-    border-radius: 50%;
-    border: 5px solid rgba(255, 255, 255, 0.6); /* Semi-transparent border */
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease;
-}
 
-.circle:hover::before {
-    border-color: #fff; /* White border on hover */
+
+.dentists__container h3{
+    text-align: center;
+    color: #333;
+    margin-top: 10px;
+    text-transform: capitalize;
 }
 
 .icon {
@@ -80,3 +81,4 @@
     font-size: 18px; /* Font size for text */
     font-weight: 600;
 }
+
