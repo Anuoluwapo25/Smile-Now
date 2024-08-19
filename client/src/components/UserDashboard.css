@@ -1,0 +1,37 @@
+.dashboard {
+    margin: 100px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.appointments-section {
+    margin-top: 20px;
+    background: linear-gradient(90deg, rgb(5, 138, 240) 0%, rgb(26, 23, 23) 100%); 
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .appointments-section h2 {
+    margin-bottom: 15px;
+  }
+  
+  .appointments-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .appointments-section li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .appointments-section li:last-child {
+    border-bottom: none;
+  }
+  
+  .appointments-section p {
+    margin: 5px 0;
+  }
+  
