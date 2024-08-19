@@ -37,7 +37,7 @@ const LogIn = () => {
             console.log("Success:", data); // Log the successful response data to the console
             // Here, you can add additional logic to handle the response, such as saving a token or redirecting the user
 
-            navigate("/services")            
+            navigate("/user_dashboard")            
         } catch (error) {
             setError(error.message); // Set the error message to display to the user
             console.error("Error:", error); // Log the error to the console for debugging

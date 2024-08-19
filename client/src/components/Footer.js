@@ -1,6 +1,5 @@
 import React from 'react'; // Import React library for component creation
 import './Footer.css'; // Import CSS styles for the Footer component
-import { Button } from './Button'; // Import Button component
 import { Link } from 'react-router-dom'; // Import Link for client-side routing
 
 function Footer() {
