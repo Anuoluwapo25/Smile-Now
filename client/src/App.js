@@ -8,6 +8,7 @@ import BookAppointment from "./components/pages/BookAppointment";
 import LogIn from "./components/pages/LogIn";
 import SignUp from "./components/pages/SignUp";
 import Dentists from "./components/pages/Dentists";
+import User_Dashboard from "./components/pages/User_Dashboard";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/book-appointment" Component={BookAppointment} />
         <Route path="/log-in" Component={LogIn} />
         <Route path="/dentists" Component={Dentists} />
+        <Route path="/user_dashboard" Component={User_Dashboard} />
 
       </Routes>
     </Router>
