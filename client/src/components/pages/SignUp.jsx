@@ -15,7 +15,7 @@ const SignUp = () => {
     const handleSubmit = async () => {
         setError(""); 
 
-        const payload = { email, password, firstname, lastname };
+        const payload = { "email":email, "password":password, "first_name":firstname, "last_name":lastname };
 
         try {
             const response = await fetch(`http://127.0.0.1:8000/register/`, {
