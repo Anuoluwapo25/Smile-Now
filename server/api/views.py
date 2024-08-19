@@ -21,15 +21,6 @@ def register(request):
         return Response({"msg":"user created successfully"}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# @api_view(['POST'])
-# def login(request):
-#     data = request.data
-#     user = authenticate(username=data.get('username'), password=data.get('password'))
-#     if user:
-#         token, created = Token.objects.get_or_create(user=user)
-#         return Response({"msg":"user logged in","token":token.key}, status=status.HTTP_200_OK)
-#     return Response({"msg":"Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
-
 @api_view(['POST'])
 def login(request):
     data = request.data
