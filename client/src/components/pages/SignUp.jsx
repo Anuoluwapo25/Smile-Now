@@ -4,6 +4,7 @@ import "./SignUp.css"; // Import styles specific to the SignUp component
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+    const [username, setUsername] = useState("");
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const SignUp = () => {
     const handleSubmit = async () => {
         setError(""); 
 
-        const payload = { "email":email, "password":password, "first_name":firstname, "last_name":lastname };
+        const payload = {"username":username, "email":email, "password":password, "first_name":firstname, "last_name":lastname };
 
         try {
             const response = await fetch(`http://127.0.0.1:8000/register/`, {
@@ -48,6 +49,14 @@ const SignUp = () => {
                 <div className="underline"></div>
             </div>
             <div className='inputs'>
+                <div className='input'>
+                    <input
+                        type="text"
+                        placeholder='username'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </div>
                 <div className='input'>
                     <input
                         type="text"

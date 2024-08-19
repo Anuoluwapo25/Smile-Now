@@ -29,4 +29,4 @@ class Appointment(models.Model):
     status = models.BooleanField(max_length=50)
 
     def __str__(self):
-        return f"{self.doctor.user.username} - {self.patient.user.username} on {self.appointment_date}"
+        return f"{self.doctor.user.first_name} - {self.patient.user.first_name} on {self.appointment_date}"
