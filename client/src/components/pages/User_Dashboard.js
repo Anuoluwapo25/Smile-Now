@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import "../Footer.css"
 import UserDashboard from '../UserDashboard';
 import { Link } from 'react-router-dom';
+import "../UserDashboard.css";
 
 
 
@@ -13,7 +14,7 @@ function User_Dashboard ()  {
         <UserDashboard />
 
         <Link to="/services">
-        <button style={{ padding: '10px 20px', fontSize: '16px', marginTop: '20px' }}>
+        <button className="book_now_button">
           Book Now
         </button>
         </Link>
