@@ -1,5 +1,6 @@
+
 .dashboard {
-    margin: 100px;
+    margin:20px 100px;
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
@@ -7,10 +8,13 @@
 
 .appointments-section {
     margin-top: 20px;
-    background: linear-gradient(90deg, rgb(5, 138, 240) 0%, rgb(26, 23, 23) 100%); 
-    padding: 15px;
+    background: linear-gradient(90deg, rgb(26, 23, 23),  rgb(5, 138, 240) 100%); 
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: white;
+
+
   }
   
   .appointments-section h2 {
@@ -25,6 +29,8 @@
   .appointments-section li {
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
+    margin: 3px;
+    border: 1px solid white;
   }
   
   .appointments-section li:last-child {
@@ -32,6 +38,59 @@
   }
   
   .appointments-section p {
-    margin: 5px 0;
+    margin: 5px ;
   }
   
+
+  .booking-sec{
+    margin: 0 100px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+  }
+
+  .booking-sec h3{
+    font-size: 30px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+  }
+
+  .booking-sec label{
+    margin-right:10px;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .booking-sec button{
+    background-color:linear-gradient(90deg, rgb(5, 138, 240) 0%, rgb(26, 23, 23) 100%);
+  }
+
+  select, input {
+    height: 40px;
+    padding: 10px;
+    background-color: white;
+  }
+
+  option {
+    text-transform: capitalize;
+  }
+
+  .booking-sec button{
+    background:linear-gradient(90deg, rgb(5, 138, 240) 0%, rgb(26, 23, 23) 100%);
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 50px;
+  }
+
+  .booking-sec button:hover{
+    opacity: .9;
+  }
+
+
+

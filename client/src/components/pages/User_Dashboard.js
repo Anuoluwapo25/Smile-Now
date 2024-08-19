@@ -12,14 +12,12 @@ function User_Dashboard ()  {
     return (
       <>
         <UserDashboard />
-
+{/* 
         <Link to="/services">
         <button className="book_now_button">
           Book Now
         </button>
-        </Link>
-
-        <Footer />
+        </Link> */}
     </>
     
     );
