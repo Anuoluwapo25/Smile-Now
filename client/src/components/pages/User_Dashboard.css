@@ -1,0 +1,6 @@
+.book_now_button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 20px;
+    background-color: linear-gradient(90deg, rgb(5, 138, 240) 0%, rgb(26, 23, 23) 100%);
+}

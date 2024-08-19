@@ -23,7 +23,7 @@ function App() {
         <Route path="/book-appointment" Component={BookAppointment} />
         <Route path="/log-in" Component={LogIn} />
         <Route path="/dentists" Component={Dentists} />
-        <Route path="/user_dashboard" Components={User_Dashboard} />
+        <Route path="/user_dashboard" Component={User_Dashboard} />
 
       </Routes>
     </Router>
