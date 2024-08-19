@@ -1,6 +1,5 @@
 import React from 'react'; // Import React library for building components
 import "../App.css"; // Import global styles
-import { Button } from './Button'; // Import the Button component
 import "./HeroSection.css"; // Import specific styles for the HeroSection component
 import { Link } from 'react-router-dom';
 
