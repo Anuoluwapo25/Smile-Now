@@ -46,12 +46,11 @@ def login(request):
 @permission_classes([IsAuthenticated])
 def booking(request):
     data = request.data.copy()
-    data['patient'] = request.user.id
-
     serializer = BookingSerializer(data=data, context={'request': request})
+    
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
-        print("Serializer errors:", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

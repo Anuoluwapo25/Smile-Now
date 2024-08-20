@@ -36,29 +36,25 @@ class LoginSerializer(serializers.Serializer):
 
 
 class BookingSerializer(serializers.Serializer):
-    doctor = serializers.CharField(max_length=100)
-    service = serializers.CharField(max_length=100)
+    doctor = serializers.PrimaryKeyRelatedField(queryset=Doctor.objects.all())
+    patient = serializers.PrimaryKeyRelatedField(queryset=Patient.objects.all(), default=serializers.CurrentUserDefault())
+    service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all())
     date = serializers.DateField()
     status = serializers.BooleanField(default=True)
     
-    
     def create(self, validated_data):
-        user = self.context['request'].user
-        patient, created = Patient.objects.get_or_create(user=user)
-
-        doctor_name = validated_data.get('doctor')
-        service_name = validated_data.get('service')
-
-      
-        doctor, _ = doctor.objects.get_or_create(user__username=doctor_name)
-        service, _ = service.objects.get_or_create(name=service_name)
-
+        patient = validated_data.get('patient')
+        doctor = validated_data.get('doctor')
+        service = validated_data.get('service')
         
         booking = Booking.objects.create(
             doctor=doctor,
             patient=patient,
             service=service,
             date=validated_data['date'],
-            status=validated_data['status']
+            status=validated_data.get('status', True)
         )
         return booking
+    
+    
+    
