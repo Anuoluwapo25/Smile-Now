@@ -4,21 +4,25 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.utils import timezone
 from .models import Doctor, Service, Booking
-from .serializer import RegisterSerializer, LoginSerializer, DoctorSerializer, ServiceSerializer, BookingSerializer
+from .serializer import RegisterSerializer, LoginSerializer, DoctorSerializer,ServiceSerializer, BookingSerializer, DoctorLoginSerializer
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 
-@api_view(['GET'])
+
+api_view(['GET'])
 def home(request):
     return Response("Hello World")
 
 @api_view(['POST'])
 def register(request):
-    serializer = RegisterSerializer(data=request.data)
+    data = request.data
+    serializer = RegisterSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
-        return Response({"msg": "User created successfully"}, status=status.HTTP_201_CREATED)
+        return Response({"msg":"user created successfully"}, status=status.HTTP_201_CREATED)
+    else:
+        print(serializer.errors)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
@@ -27,11 +31,41 @@ def login(request):
     email = data.get('email')
     password = data.get('password')
 
-    user = authenticate(username=email, password=password)
+    try:
+        user = User.objects.get(email=email)
+    except User.DoesNotExist:
+        return Response({"msg": "User with this email does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+    user = authenticate(username=user.username, password=password)
     if user:
         token, created = Token.objects.get_or_create(user=user)
         return Response({"msg": "User logged in", "token": token.key}, status=status.HTTP_200_OK)
+    else:
+        print(serializer.errors)
     return Response({"msg": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def doctor_login(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(username=username, password=password)
+    
+    if user is not None:
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({'token': token.key}, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def doctor_dashboard(request, doctor_id):
+    try:
+        doctor = Doctor.objects.get(pk=doctor_id)
+    except Doctor.DoesNotExist:
+        return Response({'error': 'Doctor not found'}, status=status.HTTP_404_NOT_FOUND)
+
+    serializer = DoctorSerializer(doctor)
+    return Response(serializer.data)
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
