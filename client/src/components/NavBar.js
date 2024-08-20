@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./Button.css"; // Importing CSS file for button styling
-import { Link } from "react-router-dom"; // Importing Link component from react-router-dom for navigation
+import { Link, useLocation } from "react-router-dom"; // Importing Link component from react-router-dom for navigation
 import "./NavBar.css"; // Importing CSS file for navbar styling
 import { Button } from "./Button"; // Importing Button component
 
+
 function Navbar() {
-    // State to manage the mobile menu's visibility (open/close)
     const [click, setClick] = useState(false);
     // State to determine whether the buttons should be shown or not based on screen size
     const [button, setButton] = useState(true);
-
-    // Function to toggle the mobile menu's visibility
     const handleClick = () => setClick(!click);
     // Function to close the mobile menu
     const closeMobileMenu = () => setClick(false);
-
+    
     // Function to show/hide buttons based on screen size
     const showButton = () => {
         if (window.innerWidth <= 960) {

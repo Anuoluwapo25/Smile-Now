@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import "../../App.css"; // Import global styles
 import "./LogIn.css"; // Import styles specific to the LogIn component
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import Navbar from '../NavBar';
+
 const LogIn = () => {
     // State to store the input values for email and password
     const [email, setEmail] = useState("");
@@ -50,6 +52,7 @@ const LogIn = () => {
     };
 
     return (
+        <>
         <div className='container'> {/* Main container for the login form */}
             <div className='header'> {/* Header section containing the title */}
                 <div className='text'>Log In</div> {/* Display the "Log In" action */}
@@ -77,7 +80,7 @@ const LogIn = () => {
             {error && <div className='error'>{error}</div>}
             {/* Display the "Forgot Password" link */}
             <div className='forgot-password'>
-                Forgot Password? <span>Click here!</span> {/* Clickable "Forgot Password" text */}
+                Are you dentist <Link to="/dentists/login">Click here!</Link> 
             </div>
             <div className='submit-container'> {/* Container for the submit button */}
                 {/* Button to handle form submission */}
@@ -89,6 +92,8 @@ const LogIn = () => {
                 </div>
             </div>
         </div>
+
+        </>
     );
 }
 

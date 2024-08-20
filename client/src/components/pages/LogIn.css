@@ -4,7 +4,6 @@
     flex-direction: column; /* Arrange children in a vertical column */
     margin: auto; /* Center the container horizontally */
     width: 600px; /* Set the container width */
-    margin-top: 200px; /* Space above the container */
     background: #fff; /* White background color */
     padding-bottom: 30px; /* Space below the content inside the container */
 }
