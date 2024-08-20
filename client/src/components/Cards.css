@@ -1,24 +1,30 @@
 .cards {
   padding: 4rem; /* Adds padding around the entire cards container */
-  background: #fff; /* Sets the background color to white */
+  background:  #f0f8ff; /* Sets the background color to white */
 }
 
 h1 {
   text-align: center; /* Centers the heading text */
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #333;
 }
 
 .cards__container {
   display: flex; /* Uses flexbox for layout */
   flex-flow: column; /* Arranges items in a column */
   align-items: center; /* Centers items horizontally */
-  max-width: 1120px; /* Sets a maximum width for the container */
+  max-width: 1200px; /* Sets a maximum width for the container */
   width: 90%; /* Sets the width to 90% of the parent */
   margin: 0 auto; /* Centers the container horizontally */
 }
 
 .cards__wrapper {
-  position: relative; /* Allows positioning of child elements */
-  margin: 50px 0 45px; /* Adds margin around the wrapper */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  /* position: relative;
+  margin: 50px 0 45px;  */
 }
 
 .cards__items {
@@ -52,7 +58,7 @@ h1 {
 }
 
 .fade-img {
-  animation-name: fade-img; /* Applies the fade-img animation */
+  /* animation-name: fade-img;  */
   animation-duration: 2s; /* Sets the duration of the animation */
 }
 

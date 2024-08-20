@@ -36,6 +36,11 @@ const LogIn = () => {
             const data = await response.json(); // Parse the JSON response
             console.log("Success:", data); // Log the successful response data to the console
             // Here, you can add additional logic to handle the response, such as saving a token or redirecting the user
+            const { token } = data;
+
+            // Store the token in localStorage
+            localStorage.setItem("token", token);
+            console.log('Retrieved token:', token);
 
             navigate("/user_dashboard")            
         } catch (error) {

@@ -26,7 +26,8 @@
     color: #fff; /* White text color */
     padding: 8px 20px; /* Vertical and horizontal padding for button */
     border: 1px solid var(--primary); /* Border with the primary color */
-    transition: all 0.3s ease-out; /* Smooth transition for hover effects */
+    transition: all 0.3s ease-out;
+    border-radius: 50px;
 }
 
 /* Medium-sized button */

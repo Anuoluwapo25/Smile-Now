@@ -1,53 +1,52 @@
-/* Styles for all images */
+Styles for all images
 img {
-  object-fit: cover; /* Ensures the image covers the container while maintaining its aspect ratio */
-  width: 100%; /* Makes the image width 100% of its container */
-  height: 100%; /* Makes the image height 100% of its container */
-  position: fixed; /* Fixes the image position relative to the viewport */
-  z-index: -1; /* Places the image behind other content */
+  width: 100%; 
+  height: 100%; 
+  position: fixed;
+  z-index: -1; 
 }
 
-/* Styles for the hero section container */
+
 .hero-container {
-  background: url('../../public/images/img-1.jpg') center center/cover no-repeat; /* Sets a background image, centered and covering the container */
-  height: 100vh; /* Makes the container height equal to the viewport height */
-  width: 100%; /* Makes the container width 100% of its parent */
-  display: flex; /* Uses flexbox layout for child elements */
-  flex-direction: column; /* Arranges child elements in a column */
-  justify-content: center; /* Centers child elements vertically */
-  align-items: center; /* Centers child elements horizontally */
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2); /* Creates an inset shadow to darken the background */
-  object-fit: contain; /* Ensures the container content fits within its bounds */
+  background: url('../../public/images/img-1.jpg') center center/cover no-repeat; 
+  height: 100vh; 
+  width: 100%; 
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2); 
+  object-fit: contain; 
 }
 
-/* Styles for the main heading within the hero container */
+
 .hero-container > h1 {
-  color: #fff; /* Sets the text color to white */
-  font-size: 100px; /* Sets the font size to 100px */
-  margin-top: -100px; /* Adjusts the top margin to position the heading */
+  color: #fff;
+  font-size: 100px; 
+  margin-top: -100px; 
 }
 
-/* Styles for the paragraph within the hero container */
+
 .hero-container > p {
-  margin-top: 8px; /* Adds a top margin for spacing */
-  color: #fff; /* Sets the text color to white */
-  font-size: 32px; /* Sets the font size to 32px */
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Specifies the font stack */
+  margin-top: 8px; 
+  color: #fff; 
+  font-size: 32px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
 }
 
-/* Styles for the buttons container within the hero section */
+
 .hero-btns {
-  margin-top: 32px; /* Adds top margin for spacing */
+  margin-top: 32px; 
 }
 
-/* Styles for individual buttons within the buttons container */
+
 .hero-btns .btn {
-  margin: 6px; /* Adds margin around buttons for spacing */
+  margin: 6px; 
 }
 
-/* Styles for the play circle icon */
+
 .fa-play-circle {
-  margin-left: 4px; /* Adds left margin to space the icon from the text */
+  margin-left: 4px; 
 }
 
 .home-btn{
@@ -62,32 +61,31 @@ img {
 }
 
 
-/* Responsive styles for screens with a maximum width of 960px */
+
 @media screen and (max-width: 960px) {
   .hero-container > h1 {
-      font-size: 70px; /* Reduces font size for smaller screens */
-      margin-top: -150px; /* Adjusts top margin for positioning */
+      font-size: 70px;
+      margin-top: -150px; 
   }
 }
 
-/* Responsive styles for screens with a maximum width of 768px */
+
 @media screen and (max-width: 768px) {
   .hero-container > h1 {
-      font-size: 50px; /* Further reduces font size for smaller screens */
-      margin-top: -100px; /* Adjusts top margin for positioning */
+      font-size: 50px; 
+      margin-top: -100px; 
   }
-
+}
   .hero-container > p {
-      font-size: 30px; /* Reduces font size for the paragraph */
-  }
+      font-size: 30px; 
 
   .btn-mobile {
-      display: block; /* Makes the button block-level for better mobile display */
-      text-decoration: none; /* Removes underline from links */
+      display: block; 
+      text-decoration: none; 
   }
 
   .btn {
-      width: 100%; /* Makes buttons full-width for better mobile display */
+      width: 100%; 
   }
 }
 

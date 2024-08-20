@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: left;
-    height: 400px;
+    height: 500px;
     margin: 0 auto;
 }
 
@@ -21,4 +21,18 @@
 .home-btn{
     margin:200px;
     font-weight: 400;
+    background-color: #ff5722;  
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;            
+    border: none;
+    border-radius: 50px;        
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
+
+
+

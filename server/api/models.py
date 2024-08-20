@@ -9,24 +9,24 @@ class Service(models.Model):
 
 class Doctor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    speciality = models.ForeignKey(Service, on_delete=models.CASCADE)
-    availability = models.DateTimeField()
+    # speciality = models.ForeignKey(Service, on_delete=models.CASCADE)
+    # availability = models.DateTimeField()
 
     def __str__(self):
         return self.user.username
 
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username
 
-class Appointment(models.Model):
+class Booking(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    appointment_date = models.DateTimeField()
-    status = models.BooleanField(max_length=50)
+    date = models.DateField()
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    status = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.doctor.user.first_name} - {self.patient.user.first_name} on {self.appointment_date}"
+        return f"{self.doctor.user.first_name} - {self.patient.user.first_name} on {self.date}"
