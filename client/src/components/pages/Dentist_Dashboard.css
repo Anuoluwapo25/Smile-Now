@@ -1,0 +1,16 @@
+/* Dentist_Dashboard.css */
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 2.5px;
+    padding: 0;
+  }
+  
+  .dentist-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
