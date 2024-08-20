@@ -23,7 +23,7 @@
 
 .dentists__container {
     display: flex;
-    justify-content: space-between; /* Evenly spaces items */
+    justify-content: center; 
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
     gap: 20px; /* Space between items */
 }

@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Dentists.css";
+import Navbar from "../NavBar";
+import Footer from "../Footer";
 
 function Dentists() {
     return (
+        <>
         <div className="dentists">
             <div className="dentists__header">
                 <h1>Meet Our Dentists</h1>
@@ -31,6 +34,7 @@ function Dentists() {
                
             </div>
         </div>
+        </>
     );
 }
 

@@ -1,0 +1,19 @@
+.login-form button{
+    background: linear-gradient(90deg, rgb(5, 138, 240) 0%, rgb(26, 23, 23) 100%);
+    color: white;
+    padding: 10px;
+}
+
+.login-form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    gap: 10px;
+    background-color:white;
+}
+
+.login-form form{
+    width: 400px;
+}
+
