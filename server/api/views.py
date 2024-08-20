@@ -1,15 +1,16 @@
-from django.shortcuts import render
-from rest_framework.decorators import api_view, permission_classes
-from api.serializer import RegisterSerializer, BookingSerializer
-from django.contrib.auth.models import User
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from django.utils import timezone
+from .models import Doctor, Service, Booking
+from .serializer import RegisterSerializer, LoginSerializer, DoctorSerializer,ServiceSerializer, BookingSerializer, DoctorLoginSerializer
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
-# Create your views here.
+from django.contrib.auth.models import User
 
-@api_view(['GET'])
+
+api_view(['GET'])
 def home(request):
     return Response("Hello World")
 
@@ -29,28 +30,80 @@ def login(request):
     data = request.data
     email = data.get('email')
     password = data.get('password')
-    
+
     try:
         user = User.objects.get(email=email)
     except User.DoesNotExist:
         return Response({"msg": "User with this email does not exist"}, status=status.HTTP_400_BAD_REQUEST)
-    
+
     user = authenticate(username=user.username, password=password)
     if user:
         token, created = Token.objects.get_or_create(user=user)
         return Response({"msg": "User logged in", "token": token.key}, status=status.HTTP_200_OK)
+    else:
+        print(serializer.errors)
     return Response({"msg": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
-
 @api_view(['POST'])
+def doctor_login(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(username=username, password=password)
+    
+    if user is not None:
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({'token': token.key}, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def doctor_dashboard(request, doctor_id):
+    try:
+        doctor = Doctor.objects.get(pk=doctor_id)
+    except Doctor.DoesNotExist:
+        return Response({'error': 'Doctor not found'}, status=status.HTTP_404_NOT_FOUND)
+
+    serializer = DoctorSerializer(doctor)
+    return Response(serializer.data)
+
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def booking(request):
-    data = request.data.copy()
-    serializer = BookingSerializer(data=data, context={'request': request})
-    
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    else:
+    if request.method == 'GET':
+        upcoming_bookings = Booking.objects.filter(
+            patient=request.user,
+            date__gte=timezone.now().date(),
+            status=True
+        ).order_by('date')
+        booking_serializer = BookingSerializer(upcoming_bookings, many=True)
+
+        services = Service.objects.all()
+        service_serializer = ServiceSerializer(services, many=True)
+
+        doctors = Doctor.objects.all()
+        doctor_serializer = DoctorSerializer(doctors, many=True)
+
+        return Response({
+            'appointments': booking_serializer.data,
+            'services': service_serializer.data,
+            'doctors': doctor_serializer.data,
+        })
+
+    elif request.method == 'POST':
+        serializer = BookingSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(patient=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def user_details(request):
+    user = request.user
+    user_data = {
+        'firstname': user.first_name,
+        'lastname': user.last_name,
+        'email': user.email
+    }
+    return Response(user_data)

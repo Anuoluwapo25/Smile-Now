@@ -1,6 +1,10 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Patient, Doctor, Service, Booking
+from .models import Doctor, Service, Booking
+
+from rest_framework import serializers
+from django.contrib.auth.models import User
+from .models import Doctor, Service, Booking
 
 
 class RegisterSerializer(serializers.Serializer):
@@ -10,7 +14,7 @@ class RegisterSerializer(serializers.Serializer):
     last_name = serializers.CharField()
     email = serializers.EmailField()
     password = serializers.CharField()
-    
+
     def validate(self, obj):
         if User.objects.filter(email=obj.get('email')).exists():
             raise serializers.ValidationError("Email already exists")
@@ -29,32 +33,32 @@ class RegisterSerializer(serializers.Serializer):
         user.save()
         return user
 
-
 class LoginSerializer(serializers.Serializer):
     email = serializers.CharField()
     password = serializers.CharField()
 
+class DoctorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Doctor
+        fields = ['id', 'name', 'specialization', 'availability']
 
-class BookingSerializer(serializers.Serializer):
+class DoctorLoginSerializer(serializers.Serializer):
+    username = serializers.CharField(required=True)
+    password = serializers.CharField(required=True)
+
+class ServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Service
+        fields = ['id', 'name', 'description']
+
+class BookingSerializer(serializers.ModelSerializer):
     doctor = serializers.PrimaryKeyRelatedField(queryset=Doctor.objects.all())
-    patient = serializers.PrimaryKeyRelatedField(queryset=Patient.objects.all(), default=serializers.CurrentUserDefault())
     service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all())
-    date = serializers.DateField()
-    status = serializers.BooleanField(default=True)
-    
+    patient = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
+    class Meta:
+        model = Booking
+        fields = ['id', 'doctor', 'service', 'patient', 'date', 'status']
+
     def create(self, validated_data):
-        patient = validated_data.get('patient')
-        doctor = validated_data.get('doctor')
-        service = validated_data.get('service')
-        
-        booking = Booking.objects.create(
-            doctor=doctor,
-            patient=patient,
-            service=service,
-            date=validated_data['date'],
-            status=validated_data.get('status', True)
-        )
-        return booking
-    
-    
-    
+        return Booking.objects.create(**validated_data)
