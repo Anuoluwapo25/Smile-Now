@@ -1,0 +1,47 @@
+/* styles.css */
+
+.profile-section, .appointments-section {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .profile-section h2 {
+    margin: 0;
+  }
+  
+  .profile-section button {
+    margin-top: 10px;
+  }
+  
+  .appointments-section {
+    margin-top: 20px;
+  }
+  
+  .appointment-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .appointment-card p {
+    margin: 5px 0;
+  }
+  
+  .appointment-card button {
+    margin-top: 10px;
+  }
+
+/* styles.css */
+
+@media (max-width: 768px) {
+    .profile-section, .appointments-section {
+      padding: 10px;
+    }
+  
+    .appointment-card {
+      font-size: 14px;
+    }
+  }
+  
