@@ -1,49 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import "./Button.css"; // Importing CSS file for button styling
-import { Link, useLocation } from "react-router-dom"; // Importing Link component from react-router-dom for navigation
 import "./NavBar.css"; // Importing CSS file for navbar styling
 import { Button } from "./Button"; // Importing Button component
-
+import { AuthContext } from "../context/AuthContext"; // Importing AuthContext
 
 function Navbar() {
     const [click, setClick] = useState(false);
-    // State to determine whether the buttons should be shown or not based on screen size
     const [button, setButton] = useState(true);
+    const { isLoggedIn } = useContext(AuthContext); // Using AuthContext to access isLoggedIn state
+
     const handleClick = () => setClick(!click);
-    // Function to close the mobile menu
     const closeMobileMenu = () => setClick(false);
-    
-    // Function to show/hide buttons based on screen size
+
     const showButton = () => {
         if (window.innerWidth <= 960) {
-            setButton(false); // Hide buttons on smaller screens
+            setButton(false);
         } else {
-            setButton(true); // Show buttons on larger screens
+            setButton(true);
         }
     };
 
-    // useEffect to ensure buttons are shown/hidden correctly when the component mounts
     useEffect(() => {
         showButton();
     }, []);
 
-    // Event listener to handle window resizing and adjust button visibility accordingly
     window.addEventListener("resize", showButton);
 
     return (
         <>
-            {/* Navbar container */}
             <nav className="navbar">
                 <div className="navbar-container">
-                    {/* Logo with a clickable link that closes the mobile menu */}
                     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                         SmileNow <i className="fab fa-typo3" />
                     </Link>
-                    {/* Menu icon that toggles the mobile menu */}
                     <div className="menu-icon" onClick={handleClick}>
                         <i className={click ? "fas fa-times" : "fas fa-bars"} />
                     </div>
-                    {/* Navigation links that change style based on mobile menu state */}
                     <ul className={click ? "nav-menu active" : "nav-menu"}>
                         <li className="nav-item">
                             <Link to="/" className="nav-links" onClick={closeMobileMenu}>
@@ -61,38 +54,39 @@ function Navbar() {
                             </Link>
                         </li>
                         {/* Mobile-only links */}
-                        <li>
-                            <Link to="/sign-up" className="nav-links-mobile" onClick={closeMobileMenu}>
-                                Sign Up
-                            </Link>
-                        </li>
+                        {!isLoggedIn && (
+                            <li>
+                                <Link to="/sign-up" className="nav-links-mobile" onClick={closeMobileMenu}>
+                                    Sign Up
+                                </Link>
+                            </li>
+                        )}
                         <li>
                             <Link to="/log-in" className="nav-links-mobile" onClick={closeMobileMenu}>
                                 Log In
                             </Link>
                         </li>
                     </ul>
-                    {/* Display buttons only if the screen is large enough */}
                     {button && (
-                    <div className="btn-container">
-                        <div className="btn-wrapper">
-                            <Link to="/sign-up" className="btn-link">
-                                <Button route="/sign-up" buttonStyle="btn--outline" buttonSize="btn--large">
-                                    Sign Up
-                                </Button>
-                            </Link>
+                        <div className="btn-container">
+                            {!isLoggedIn && (
+                                <div className="btn-wrapper">
+                                    <Link to="/sign-up" className="btn-link">
+                                        <Button route="/sign-up" buttonStyle="btn--outline" buttonSize="btn--large">
+                                            Sign Up
+                                        </Button>
+                                    </Link>
+                                </div>
+                            )}
+                            <div className="btn-wrapper">
+                                <Link to="/log-in" className="btn-link">
+                                    <Button route="/log-in" buttonStyle="btn--outline" buttonSize="btn--medium">
+                                        Log In
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
-                        <div className="btn-wrapper">
-                            <Link to="/login" className="btn-link">
-                                <Button route="/log-in" buttonStyle="btn--outline" buttonSize="btn--medium">
-                                    Log In
-                                </Button>
-                            </Link>
-                        </div>
-                    </div>
-)}
-
-
+                    )}
                 </div>
             </nav>
         </>
