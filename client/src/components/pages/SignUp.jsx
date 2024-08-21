@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import "../../App.css"; // Import global styles
 import "./SignUp.css"; // Import styles specific to the SignUp component
 import { useNavigate } from "react-router-dom";
-import Navbar from '../NavBar';
 
 const SignUp = () => {
     const [username, setUsername] = useState("");
