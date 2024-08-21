@@ -44,8 +44,8 @@ const Dentist_Login = () => {
     <div className="login-form">
         <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="enter your email" value={setEmail}></input>
-        <input type="password" placeholder="enter your password" value={setPassword}></input>
+        <input type="email" placeholder="enter your email" value={email} onChange={(e)=> setEmail(e.target.value)}></input>
+        <input type="password" placeholder="enter your password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
         <p>{error}</p>
         <button type="submit">Login page for dentist</button>
       </form>
