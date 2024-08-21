@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     
     #local app
     'api.apps.ApiConfig',
+    # 'api',
     
     # Thrid party app
     'corsheaders',
@@ -127,9 +128,8 @@ REST_FRAMEWORK = {
 
 
 AUTHENTICATION_BACKENDS = [
-    'userAuth.backends.EmailBackend',
+    'api.backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
-    'userAuth.backends.EmailBackend',
 ]
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -153,7 +153,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'api.CustomerUser'
 
 # developemnt purpose only
 CORS_ALLOW_ALL_ORIGINS = True
