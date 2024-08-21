@@ -18,7 +18,7 @@ const SignUp = () => {
         const payload = {"username":username, "email":email, "password":password, "first_name":firstname, "last_name":lastname };
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/register/`, {
+            const response = await fetch(`https://smile-now-1.onrender.com/register/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
