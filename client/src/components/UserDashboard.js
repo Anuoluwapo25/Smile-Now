@@ -6,7 +6,7 @@ function UserDashboard() {
   const [appointments, setAppointments] = useState([]);
   const [selectedOption, setSelectOption] = useState('')
   const [appointment_date, setAppointment_date] = useState('')
-  const [docter, setDocter] = useState('')
+  const [doctor, setDoctor] = useState('')
 
   useEffect(() => {
     // Fetch user details from the server
@@ -27,7 +27,7 @@ function UserDashboard() {
     e.preventDefault()
     let appointment_info = {
       "date":appointment_date,
-      "docter":docter,
+      "doctor":doctor,
       "service":selectedOption
     }
     setAppointments((prev) => [...prev, appointment_info])
@@ -42,7 +42,7 @@ function UserDashboard() {
   const handleDocterOption = (e) =>{
     e.preventDefault()
 
-    setDocter(e.target.value)
+    setDoctor(e.target.value)
 
   }
   return (
@@ -62,9 +62,9 @@ function UserDashboard() {
             {appointments.map((appointment) => (
               <li key={appointment.id}>
                 <p><strong>Date:</strong> {appointment.date}</p>
-                <p><strong>Docter:</strong> {appointment.docter}</p>
-                <p><strong>service:</strong> {appointment.service}</p>
-                <p>you have {appointment.service} appointment on {appointment.date} with {appointment.docter}</p>
+                <p><strong>Doctor:</strong> {appointment.doctor}</p>
+                <p><strong>Service:</strong> {appointment.service}</p>
+                <p>You have {appointment.service} appointment on {appointment.date} with {appointment.doctor}</p>
               </li>
             ))}
           </ul>
@@ -76,32 +76,32 @@ function UserDashboard() {
 
 
      <div className='booking-sec'>
-         <h3>book you appointment here</h3>
+         <h3>Book your appointment here</h3>
 
        <form className='book-form' onSubmit={handleSubmit}>
-          <label for="service">select a docter</label>
-          <select name="service" id="service" value={docter} onChange={handleDocterOption}>
-            <option value="none">select docter</option>
-            <option value="jenna smith">jenna smith</option>
-            <option value="micheal scoot">micheal scott</option>
-            <option value="john snow">john snow</option>
+          <label for="service">Select you Doctor</label>
+          <select name="service" id="service" value={doctor} onChange={handleDocterOption}>
+            <option value="none">Select your Doctor</option>
+            <option value="Dr. Jenna Smith">Dr. Jenna Smith</option>
+            <option value="Dr. Micheal Scoot">Dr. Micheal Scott</option>
+            <option value="Dr. John Snow">Dr. John Snow</option>
           </select>
 
-          <label for="service">select service</label>
+          <label for="service">Select Service</label>
           <select name="service" id="service" value={selectedOption} onChange={handleOption}>
-            <option value="none">select service</option>
-            <option value="dental cleaning">dental cleaning</option>
-            <option value="teeth whitening">teeth whitening</option>
-            <option value="dental filling">dental filling</option>
-            <option value="brace fix">brace fix</option>
-            <option value="dental bridge">dental bridge</option>
-            <option value="root canal">root canal</option>
+            <option value="none">Select Service</option>
+            <option value="Dental Cleaning">Dental Cleaning</option>
+            <option value="Teeth Whitening">Teeth Whitening</option>
+            <option value="Dental Filling">Dental Filling</option>
+            <option value="Brace Fix">Brace Fix</option>
+            <option value="Dental Bridge">Dental Bridge</option>
+            <option value="Root Canal">Root Canal</option>
           </select>
           <br/>
-          <label for="date">select appointment date</label>
+          <label for="date">Select an appointment date</label>
           <input type='date' value={appointment_date} onChange={(e)=>setAppointment_date(e.target.value)}></input>
 
-          <button type='submit'>submit</button>
+          <button type='submit'>Submit</button>
        </form>
      </div>
     </>
