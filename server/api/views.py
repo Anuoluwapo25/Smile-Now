@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from django.utils import timezone
 from .models import CustomerUser
-from .serializer import RegisterSerializer, LoginSerializer, CustomerUserSerializer, DoctorAuthentication, DoctorLoginSerializer
+from .serializer import RegisterSerializer, LoginSerializer, CustomerUserSerializer, DoctorAuthentication, DoctorLoginSerializer, BookingSerializer
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
@@ -60,58 +60,13 @@ class DoctorLoginView(APIView):
 
         return Response({'token': token.key})
 
-# @api_view(['POST'])
-# def doctor_login(request):
-#     username = request.data.get('username')
-#     password = request.data.get('password')
-#     user = authenticate(username=username, password=password)
-    
-#     if user is not None:
-#         token, created = Token.objects.get_or_create(user=user)
-#         return Response({'token': token.key}, status=status.HTTP_200_OK)
-#     else:
-#         return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
-
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def doctor_dashboard(request, doctor_id):
-#     try:
-#         doctor = Doctor.objects.get(pk=doctor_id)
-#     except Doctor.DoesNotExist:
-#         return Response({'error': 'Doctor not found'}, status=status.HTTP_404_NOT_FOUND)
-
-#     serializer = DoctorSerializer(doctor)
-#     return Response(serializer.data)
-
-# @api_view(['GET', 'POST'])
-# @permission_classes([IsAuthenticated])
-# def booking(request):
-#     if request.method == 'GET':
-#         upcoming_bookings = Booking.objects.filter(
-#             patient=request.user,
-#             date__gte=timezone.now().date(),
-#             status=True
-#         ).order_by('date')
-#         booking_serializer = BookingSerializer(upcoming_bookings, many=True)
-
-#         services = Service.objects.all()
-#         service_serializer = ServiceSerializer(services, many=True)
-
-#         doctors = Doctor.objects.all()
-#         doctor_serializer = DoctorSerializer(doctors, many=True)
-
-#         return Response({
-#             'appointments': booking_serializer.data,
-#             'services': service_serializer.data,
-#             'doctors': doctor_serializer.data,
-#         })
-
-#     elif request.method == 'POST':
-#         serializer = BookingSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save(patient=request.user)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class BookingCreateView(APIView):
+    def post(self, request):
+        serializer = BookingSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=HTTP_201_CREATED)
+        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated])

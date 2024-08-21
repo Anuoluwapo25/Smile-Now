@@ -5,7 +5,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-from .models import CustomerUser, Doctor
+from .models import CustomerUser, Doctor, BookUser
 
 
 class CustomerUserSerializer(serializers.Serializer):
@@ -109,14 +109,17 @@ class DoctorSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'specialization', 'availability']
 
 
-# class BookingSerializer(serializers.ModelSerializer):
-#     doctor = serializers.PrimaryKeyRelatedField(queryset=Doctor.objects.all())
-#     service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all())
-#     patient = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+class BookingSerializer(serializers.Serializer):
+    doctor = serializers.PrimaryKeyRelatedField(queryset=Doctor.objects.all())
+    service = serializers.CharField(max_length=255)
+    date = serializers.DateField()
+    status = serializers.CharField(max_length=20, default='pending')
 
-#     class Meta:
-#         model = Booking
-#         fields = ['id', 'doctor', 'service', 'patient', 'date', 'status']
+    def create(self, validated_data):
+        request = self.context.get('request')
+        patient = request.user
 
-#     def create(self, validated_data):
-#         return Booking.objects.create(**validated_data)
+        return BookUser.objects.create(
+            patient=patient,
+            **validated_data
+        )
