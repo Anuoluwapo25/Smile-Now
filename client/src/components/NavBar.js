@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import "./Button.css"; // Importing CSS file for button styling
-import "./NavBar.css"; // Importing CSS file for navbar styling
-import { Button } from "./Button"; // Importing Button component
-import { AuthContext } from "../context/AuthContext"; // Importing AuthContext
+import "./Button.css";
+import "./NavBar.css";
+import { Button } from "./Button";
+import { AuthContext } from "../context/AuthContext";
 
 function Navbar() {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
-    const { isLoggedIn } = useContext(AuthContext); // Using AuthContext to access isLoggedIn state
+    const { isLoggedIn, signupSuccess, logOut } = useContext(AuthContext); // Access signupSuccess from AuthContext
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
@@ -54,7 +54,7 @@ function Navbar() {
                             </Link>
                         </li>
                         {/* Mobile-only links */}
-                        {!isLoggedIn && (
+                        {!isLoggedIn && !signupSuccess && (
                             <li>
                                 <Link to="/sign-up" className="nav-links-mobile" onClick={closeMobileMenu}>
                                     Sign Up
@@ -62,14 +62,27 @@ function Navbar() {
                             </li>
                         )}
                         <li>
-                            <Link to="/log-in" className="nav-links-mobile" onClick={closeMobileMenu}>
-                                Log In
-                            </Link>
+                            {isLoggedIn ? (
+                                <div
+                                    className="nav-links-mobile"
+                                    onClick={() => {
+                                        logOut();
+                                        closeMobileMenu();
+                                    }}
+                                >
+                                    Logout
+                                </div>
+                            ) : (
+                                <Link to="/log-in" className="nav-links-mobile" onClick={closeMobileMenu}>
+                                    Log In
+                                </Link>
+                            )}
                         </li>
                     </ul>
                     {button && (
                         <div className="btn-container">
-                            {!isLoggedIn && (
+                            {/* Hide "Sign Up" button if isLoggedIn or signupSuccess is true */}
+                            {!isLoggedIn && !signupSuccess && (
                                 <div className="btn-wrapper">
                                     <Link to="/sign-up" className="btn-link">
                                         <Button route="/sign-up" buttonStyle="btn--outline" buttonSize="btn--large">
@@ -78,13 +91,25 @@ function Navbar() {
                                     </Link>
                                 </div>
                             )}
-                            <div className="btn-wrapper">
-                                <Link to="/log-in" className="btn-link">
-                                    <Button route="/log-in" buttonStyle="btn--outline" buttonSize="btn--medium">
-                                        Log In
+                            {isLoggedIn ? (
+                                <div className="btn-wrapper">
+                                    <Button
+                                        buttonStyle="btn--outline"
+                                        buttonSize="btn--medium"
+                                        onClick={logOut}
+                                    >
+                                        Logout
                                     </Button>
-                                </Link>
-                            </div>
+                                </div>
+                            ) : (
+                                <div className="btn-wrapper">
+                                    <Link to="/log-in" className="btn-link">
+                                        <Button route="/log-in" buttonStyle="btn--outline" buttonSize="btn--medium">
+                                            Log In
+                                        </Button>
+                                    </Link>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
