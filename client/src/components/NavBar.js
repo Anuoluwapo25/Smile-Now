@@ -85,7 +85,11 @@ function Navbar() {
                             {!isLoggedIn && !signupSuccess && (
                                 <div className="btn-wrapper">
                                     <Link to="/sign-up" className="btn-link">
-                                        <Button route="/sign-up" buttonStyle="btn--outline" buttonSize="btn--large">
+                                        <Button 
+                                            route="/sign-up" 
+                                            buttonStyle="btn--outline" 
+                                            buttonSize="btn--large"
+                                        >
                                             Sign Up
                                         </Button>
                                     </Link>
@@ -93,18 +97,25 @@ function Navbar() {
                             )}
                             {isLoggedIn ? (
                                 <div className="btn-wrapper">
-                                    <Button
-                                        buttonStyle="btn--outline"
-                                        buttonSize="btn--medium"
-                                        onClick={logOut}
-                                    >
-                                        Logout
-                                    </Button>
+                                    <Link to ="/">
+                                        <Button
+                                            route="/"
+                                            buttonStyle="btn--outline"
+                                            buttonSize="btn--medium"
+                                            onClick={logOut}
+                                        >
+                                            Log Out
+                                        </Button>
+                                        </Link>
                                 </div>
                             ) : (
                                 <div className="btn-wrapper">
                                     <Link to="/log-in" className="btn-link">
-                                        <Button route="/log-in" buttonStyle="btn--outline" buttonSize="btn--medium">
+                                        <Button 
+                                            route="/log-in" 
+                                            buttonStyle="btn--outline" 
+                                            buttonSize="btn--medium"
+                                        >
                                             Log In
                                         </Button>
                                     </Link>
