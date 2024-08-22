@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from rest_framework.authentication import BaseAuthentication
-from rest_framework.exceptions import AuthenticationFailed
+# from rest_framework.authentication import BaseAuthentication
+# from rest_framework.exceptions import AuthenticationFailed
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
@@ -61,54 +61,50 @@ class RegisterSerializer(serializers.Serializer):
         return value
 
 
-class DoctorAuthentication(BaseAuthentication):
-    def authenticate(self, request):
-        email = request.data.get('email')
-        password = request.data.get('password')
-
-        try:
-            doctor = Doctor.objects.get(user__email=email)
-            if doctor.user.check_password(password):
-                return (doctor.user, None)
-        except Doctor.DoesNotExist:
-            raise AuthenticationFailed('Invalid email or password')
-
-    def get_user(self, user_id):
-        try:
-            return CustomerUser.objects.get(pk=user_id)
-        except CustomerUser.DoesNotExist:
-            return None
-        
-# class DoctorLoginSerializer(serializers.Serializer):
-#     email = serializers.EmailField()
-#     password = serializers.CharField(write_only=True)
-
-#     def validate(self, attrs):
-#         email = attrs.get('email')
-#         password = attrs.get('password')
+# class DoctorAuthentication(BaseAuthentication):
+#     def authenticate(self, request):
+#         email = request.data.get('email')
+#         password = request.data.get('password')
 
 #         try:
 #             doctor = Doctor.objects.get(user__email=email)
-#             user = doctor.user
-#             if user.check_password(password):
-#                 attrs['user'] = user
-#                 return attrs
-#             else:
-#                 raise serializers.ValidationError('Invalid email or password')
+#             if doctor.user.check_password(password):
+#                 return (doctor.user, None)
 #         except Doctor.DoesNotExist:
-#             raise serializers.ValidationError('Invalid email or password')
+#             raise AuthenticationFailed('Invalid email or password')
+
+#     def get_user(self, user_id):
+#         try:
+#             return CustomerUser.objects.get(pk=user_id)
+#         except CustomerUser.DoesNotExist:
+#             return None
         
 class DoctorLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
-    password = serializers.CharField(write_only=True)
+    password = serializers.CharField(max_length=128, write_only=True)
 
+    def validate(self, data):
+        email = data.get('email')
+        password = data.get('password')
 
-class DoctorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Doctor
-        fields = ['id', 'name', 'specialization', 'availability']
+        if email and password:
+            user = authenticate(request=None, email=email, password=password)
 
+            if user:
+                try:
+                    doctor = Doctor.objects.get(user=user)
+                    data['user'] = user
+                    data['doctor'] = doctor
+                except Doctor.DoesNotExist:
+                    raise serializers.ValidationError("This user is not a registered doctor.")
+            else:
+                raise serializers.ValidationError("Invalid email or password provided.")
+        else:
+            raise serializers.ValidationError("Both 'email' and 'password' must be provided.")
 
+        return data
+    
+    
 class BookingSerializer(serializers.Serializer):
     doctor = serializers.PrimaryKeyRelatedField(queryset=Doctor.objects.all())
     service = serializers.CharField(max_length=255)

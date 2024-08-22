@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     'http://localhost:5173',
     'https://smile-now-1.onrender.com',
     'smile-now-1.onrender.com',
+    'https://smile-now.vercel.app/',
     'smile-now-annies-projects-0a010607.vercel.app',
     'https://smile-now-annies-projects-0a010607.vercel.app/',
 ]

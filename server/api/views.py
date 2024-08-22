@@ -1,13 +1,13 @@
-from rest_framework import status, permissions
+from rest_framework import status, permissions, serializers
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.status import HTTP_400_BAD_REQUEST
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
 from django.utils import timezone
-from .models import CustomerUser, BookUser
-from .serializer import RegisterSerializer, LoginSerializer, CustomerUserSerializer, DoctorAuthentication, DoctorLoginSerializer, BookingSerializer
+from .models import CustomerUser, BookUser, Doctor
+from .serializer import RegisterSerializer, LoginSerializer, CustomerUserSerializer, DoctorLoginSerializer, BookingSerializer
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
@@ -50,16 +50,49 @@ class LoginView(APIView):
     
 
 class DoctorLoginView(APIView):
-    authentication_classes = [DoctorAuthentication]
-
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         serializer = DoctorLoginSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        
+        if serializer.is_valid():
+            user = serializer.validated_data.get('user')
+            doctor = serializer.validated_data.get('doctor')
 
-        user = serializer.validated_data['user']
-        token, created = Token.objects.get_or_create(user=user)
+            # Generate or retrieve token for authenticated user
+            token, created = Token.objects.get_or_create(user=user)
 
-        return Response({'token': token.key})
+            return Response({
+                'token': token.key,
+                'user_id': user.id,
+                'username': user.username,
+                'email': user.email,
+                'doctor_id': doctor.id,
+                'specialization': doctor.specialization,
+            })
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+# class DoctorLoginView(APIView):
+#     permission_classes = [AllowAny]  
+#     serializer_class = DoctorLoginSerializer
+
+#     def post(self, request, *args, **kwargs):
+#         serializer = self.serializer_class(data=request.data)
+#         if serializer.is_valid(raise_exception=True):
+#             user = serializer.validated_data['user']
+#             doctor = serializer.validated_data['doctor']
+#             token, created = Token.objects.get_or_create(user=user)
+
+#             return Response({
+#                 'token': token.key,
+#                 'doctor_id': doctor.id,
+#                 'email': user.email,
+#                 'specialization': doctor.specialization,
+#             }, status=status.HTTP_200_OK)
+
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class BookingCreateView(APIView):
     def post(self, request):

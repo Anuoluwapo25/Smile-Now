@@ -94,5 +94,6 @@ class Doctor(models.Model):
     availability = models.TextField(blank=True)
 
     def __str__(self):
-        return self.user
+        return f"Dr. {self.user.first_name} {self.user.last_name} - {self.specialization}"
+
     
