@@ -12,6 +12,7 @@ import User_Dashboard from "./components/pages/User_Dashboard";
 import Dentist_Login from "./components/pages/Dentist_Login";
 import Dentist_Dashboard from "./components/pages/Dentist_Dashboard";
 import { AuthProvider } from "./context/AuthContext"; // Import the AuthProvider
+import AppointmentsSection from "./components/AppointmentsSection";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/user_dashboard" Component={User_Dashboard} />
           <Route path="/dentists/login" Component={Dentist_Login} />
           <Route path="/dentists-dashboard" Component={Dentist_Dashboard} />
+          <Route path="/appointmentssection" Component={AppointmentsSection} />
         </Routes>
       </Router>
     </AuthProvider>
