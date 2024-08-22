@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./dentist_login.css"
+import "./Dentist_Login.css"
 import { useNavigate } from "react-router-dom";
 
 const Dentist_Login = () => {
@@ -34,20 +34,20 @@ const Dentist_Login = () => {
 
             navigate("/dentists-dashboard")            
         } catch (error) {
-            setError(error.message); // Set the error message to display to the user
-            console.error("Error:", error); // Log the error to the console for debugging
+            setError(error.message);
+            console.error("Error:", error);
         }
     };
 
 
   return (
     <div className="login-form">
-        <h1>Login</h1>
+        <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="enter your email" value={email} onChange={(e)=> setEmail(e.target.value)}></input>
-        <input type="password" placeholder="enter your password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
+        <input type="email" placeholder="Enter email" value={email} onChange={(e)=> setEmail(e.target.value)}></input>
+        <input type="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
         <p>{error}</p>
-        <button type="submit">Login page for dentist</button>
+        <button type="submit">Login for Dentist</button>
       </form>
     </div>
   );

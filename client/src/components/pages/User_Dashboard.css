@@ -1,6 +1,23 @@
 .book_now_button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 20px;
-    background-color: linear-gradient(90deg, rgb(5, 138, 240) 0%, rgb(26, 23, 23) 100%);
+    padding: 12px 25px;
+    font-size: 18px;
+    margin: 20px auto; /* Centered the button horizontally */
+    background: linear-gradient(90deg, rgb(5, 138, 240) 0%, rgb(26, 23, 23) 100%);
+    color: white;
+    border: none;
+    border-radius: 5px; /* Added border radius for smoother edges */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Hover and active states */
+.book_now_button:hover {
+    background: linear-gradient(90deg, rgb(3, 115, 200) 0%, rgb(20, 18, 18) 100%);
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.book_now_button:active {
+    transform: translateY(0); /* Neutralize the lift on click */
 }
