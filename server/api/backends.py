@@ -15,31 +15,31 @@ class EmailBackend(ModelBackend):
 
         return None
 
-def authenticate_email(request, email=None, password=None):
-    try:
-        user = CustomerUser.objects.get(email=email)
-        return authenticate(request, username=user.username, password=password)
-    except CustomerUser.DoesNotExist:
-        return None
+# def authenticate_email(request, email=None, password=None):
+#     try:
+#         user = CustomerUser.objects.get(email=email)
+#         return authenticate(request, username=user.username, password=password)
+#     except CustomerUser.DoesNotExist:
+#         return None
 
 
-class EmailBackend(BaseBackend):
-    def authenticate(self, request, email=None, password=None, **kwargs):
-        try:
-            user = CustomerUser.objects.get(email=email)
-        except CustomerUser.DoesNotExist:
-            return None
+# class EmailBackend(BaseBackend):
+#     def authenticate(self, request, email=None, password=None, **kwargs):
+#         try:
+#             user = CustomerUser.objects.get(email=email)
+#         except CustomerUser.DoesNotExist:
+#             return None
 
-        if user.check_password(password):
-            return user
+#         if user.check_password(password):
+#             return user
         
-        return None
+#         return None
 
-    def get_user(self, user_id):
-        try:
-            return CustomerUser.objects.get(pk=user_id)
-        except CustomerUser.DoesNotExist:
-            return None
+#     def get_user(self, user_id):
+#         try:
+#             return CustomerUser.objects.get(pk=user_id)
+#         except CustomerUser.DoesNotExist:
+#             return None
 
 # class DoctorAuthBackend(ModelBackend):
 #     def authenticate(self, request, username=None, password=None, **kwargs):

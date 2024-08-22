@@ -81,6 +81,7 @@ class BookUser(models.Model):
     services = models.CharField(max_length=255, blank=True)
     doctor = models.CharField(max_length=255, blank=True)
     date = models.DateField(max_length=15, blank=True)
+    time = models.TimeField()
     is_completed = models.BooleanField(default=False)
 
 
