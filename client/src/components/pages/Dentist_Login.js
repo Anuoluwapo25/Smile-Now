@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./Dentist_login.css"
+import "./Dentist_Login.css"
 import { useNavigate } from "react-router-dom";
 
 const Dentist_Login = () => {
@@ -34,8 +34,8 @@ const Dentist_Login = () => {
 
             navigate("/dentists-dashboard")            
         } catch (error) {
-            setError(error.message); // Set the error message to display to the user
-            console.error("Error:", error); // Log the error to the console for debugging
+            setError(error.message);
+            console.error("Error:", error);
         }
     };
 
