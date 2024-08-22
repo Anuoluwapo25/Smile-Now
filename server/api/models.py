@@ -76,18 +76,30 @@ class CustomerUser(AbstractUser):
         return f"{self.first_name} {self.last_name}"
     
 
+# class BookUser(models.Model):
+#     name = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
+#     service = models.CharField(max_length=255, blank=True)
+#     doctor = models.CharField(max_length=255, blank=True)
+#     date = models.DateField(max_length=15, blank=True)
+#     time = models.TimeField()
+#     is_completed = models.BooleanField(default=False)
+
+
+#     def __str__(self):
+#         return f"{self.service} with {self.doctor} on {self.date}"
+
 class BookUser(models.Model):
-    name = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
-    services = models.CharField(max_length=255, blank=True)
-    doctor = models.CharField(max_length=255, blank=True)
-    date = models.DateField(max_length=15, blank=True)
+    doctor = models.CharField(max_length=100)
+    service = models.CharField(max_length=100)
+    date = models.DateField()
     time = models.TimeField()
-    is_completed = models.BooleanField(default=False)
+    name = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
 
-
+    class Meta:
+        unique_together = ['doctor', 'date', 'time']
+        
     def __str__(self):
-        return f"{self.services} with {self.dentist} on {self.date}"
-
+        return f"{self.service} with {self.doctor} on {self.date} at {self.time} for {self.name}"
 
 class Doctor(models.Model):
     user = models.OneToOneField(CustomerUser, on_delete=models.CASCADE, related_name='doctor_profile')

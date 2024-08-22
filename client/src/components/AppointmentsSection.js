@@ -99,7 +99,7 @@ export default function AppointmentsSection() {
         },
         body: JSON.stringify(formData),
       });
-
+      console.log(token)
       if (!response.ok) {
         throw new Error('Failed to book appointment');
       }

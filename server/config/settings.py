@@ -90,7 +90,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-git
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -100,6 +99,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # For token authentication
+        'rest_framework.authentication.TokenAuthentication',
+        
+        # For session authentication
+        'rest_framework.authentication.SessionAuthentication',
+        
+        # You can include both if you want to support both methods
+    ],
 }
 
 

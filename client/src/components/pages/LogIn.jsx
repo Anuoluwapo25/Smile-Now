@@ -44,6 +44,7 @@ const LogIn = () => {
             // Store the token and update the login state
             localStorage.setItem("token", token);
             setIsLoggedIn(true); // Set login state to true
+            console.log('Retrieved token:', token);
             navigate("/user_dashboard"); // Redirect to the dashboard
         } catch (error) {
             setError(error.message);

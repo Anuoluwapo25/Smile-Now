@@ -105,17 +105,42 @@ class DoctorLoginSerializer(serializers.Serializer):
         return data
     
     
+# class BookingSerializer(serializers.Serializer):
+#     doctor = serializers.PrimaryKeyRelatedField(queryset=Doctor.objects.all())
+#     service = serializers.CharField(max_length=255)
+#     date = serializers.DateField()
+#     status = serializers.CharField(max_length=20, default='pending')
+
+#     def create(self, validated_data):
+#         request = self.context.get('request')
+#         patient = request.user
+
+#         return BookUser.objects.create(
+#             patient=patient,
+#             **validated_data
+#         )
+
+
 class BookingSerializer(serializers.Serializer):
-    doctor = serializers.PrimaryKeyRelatedField(queryset=Doctor.objects.all())
-    service = serializers.CharField(max_length=255)
+    id = serializers.IntegerField(read_only=True)
+    doctor = serializers.CharField(max_length=100)
+    service = serializers.CharField(max_length=100)
     date = serializers.DateField()
-    status = serializers.CharField(max_length=20, default='pending')
+    time = serializers.TimeField()
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
 
     def create(self, validated_data):
-        request = self.context.get('request')
-        patient = request.user
+        return BookUser.objects.create(**validated_data)
 
-        return BookUser.objects.create(
-            patient=patient,
-            **validated_data
-        )
+    def update(self, instance, validated_data):
+        instance.doctor = validated_data.get('doctor', instance.doctor)
+        instance.service = validated_data.get('service', instance.service)
+        instance.date = validated_data.get('date', instance.date)
+        instance.time = validated_data.get('time', instance.time)
+        instance.save()
+        return instance
+
+class AvailabilityCheckSerializer(serializers.Serializer):
+    doctor = serializers.CharField()
+    date = serializers.DateField()
+    time = serializers.TimeField()

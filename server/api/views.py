@@ -3,11 +3,11 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.status import HTTP_400_BAD_REQUEST
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.authtoken.models import Token
 from django.utils import timezone
 from .models import CustomerUser, BookUser, Doctor
-from .serializer import RegisterSerializer, LoginSerializer, CustomerUserSerializer, DoctorLoginSerializer, BookingSerializer
+from .serializer import RegisterSerializer, LoginSerializer, CustomerUserSerializer, DoctorLoginSerializer, BookingSerializer, AvailabilityCheckSerializer
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
@@ -96,13 +96,48 @@ class DoctorLoginView(APIView):
 
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class BookingCreateView(APIView):
+# class BookingCreateView(APIView):
+#     def post(self, request):
+#         serializer = BookingSerializer(data=request.data, context={'request': request})
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=HTTP_201_CREATED)
+#         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+
+        
+class BookingView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def post(self, request):
-        serializer = BookingSerializer(data=request.data, context={'request': request})
+        data = request.data.copy()
+        data['name'] = request.user.id
+
+        serializer = BookingSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=HTTP_201_CREATED)
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            print(serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CheckAvailabilityView(APIView):
+    def post(self, request):
+        serializer = AvailabilityCheckSerializer(data=request.data)
+        if serializer.is_valid():
+            doctor = serializer.validated_data['doctor']
+            date = serializer.validated_data['date']
+            time = serializer.validated_data['time']
+            
+            # Check if an appointment already exists
+            appointment_exists = BookUser.objects.filter(
+                doctor=doctor,
+                date=date,
+                time=time
+            ).exists()
+        else:
+            print(serializer.errors)
+            return Response({'available': not appointment_exists})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
 # @api_view(['GET'])
