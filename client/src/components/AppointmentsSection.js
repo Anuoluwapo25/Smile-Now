@@ -26,34 +26,34 @@ export default function AppointmentsSection() {
     return errors;
   };
 
-  const validateTimeSlot = async () => {
-    try {
-      const response = await fetch('http://127.0.0.1:8000/check-availability/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          doctor: formData.doctor,
-          date: formData.date,
-          time: formData.time,
-        }),
-      });
+  // const validateTimeSlot = async () => {
+  //   try {
+  //     const response = await fetch('http://127.0.0.1:8000/check-availability/', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         doctor: formData.doctor,
+  //         date: formData.date,
+  //         time: formData.time,
+  //       }),
+  //     });
 
-      if (!response.ok) {
-        throw new Error('Failed to check availability');
-      }
+  //     if (!response.ok) {
+  //       throw new Error('Failed to check availability');
+  //     }
 
-      const data = await response.json();
-      if (!data.available) {
-        throw new Error('Selected time slot is not available. Please choose another time.');
-      }
+  //     const data = await response.json();
+  //     if (!data.available) {
+  //       throw new Error('Selected time slot is not available. Please choose another time.');
+  //     }
 
-      return null;
-    } catch (error) {
-      return error.message;
-    }
-  };
+  //     return null;
+  //   } catch (error) {
+  //     return error.message;
+  //   }
+  // };
 
   const handleChange = (e) => {
     setFormData({
@@ -68,29 +68,30 @@ export default function AppointmentsSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const errors = validateForm();
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
+    // const errors = validateForm();
+    // if (Object.keys(errors).length > 0) {
+    //   setFormErrors(errors);
+    //   return;
+    // }
 
     setLoading(true);
     setError(null);
-    setAsyncValidationError(null);
+    // setAsyncValidationError(null);
 
+    // try {
+    //   const asyncError = await validateTimeSlot();
+    //   if (asyncError) {
+    //     setAsyncValidationError(asyncError);
+    //     setLoading(false);
+    //     return;
+    //   }
+
+    //   const token = localStorage.getItem('token');
+    //   if (!token) {
+    //     throw new Error('Authentication token not found. Please log in.');
+    //   }
     try {
-      const asyncError = await validateTimeSlot();
-      if (asyncError) {
-        setAsyncValidationError(asyncError);
-        setLoading(false);
-        return;
-      }
-
       const token = localStorage.getItem('token');
-      if (!token) {
-        throw new Error('Authentication token not found. Please log in.');
-      }
-
       const response = await fetch('http://127.0.0.1:8000/booking/', {
         method: 'POST',
         headers: {

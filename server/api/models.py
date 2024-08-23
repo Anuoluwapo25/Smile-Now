@@ -96,16 +96,12 @@ class BookUser(models.Model):
     date = models.DateField(max_length=15, blank=True)
     time = models.TimeField(default=timezone.now().time())
     is_completed = models.BooleanField(default=False)
-
-
-    def __str__(self):
-        return self.doctor
     
-    # class Meta:
-    #     unique_together = ['doctor', 'date', 'time']
-        
-    # def __str__(self):
-    #     return f"{self.service} with {self.doctor} on {self.date} at {self.time} for {self.name}"
+    class Meta:
+        unique_together = ['doctor', 'date', 'time']
+    
+    def __str__(self):
+        return f"{self.service} with {self.doctor} on {self.date} at {self.time} for {self.name}"
 
 class Doctor(models.Model):
     user = models.OneToOneField(CustomerUser, on_delete=models.CASCADE, related_name='doctor_profile')

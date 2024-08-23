@@ -53,7 +53,7 @@ class LoginView(APIView):
 
 class DoctorLoginView(APIView):
     permission_classes = [permissions.AllowAny]
-    
+
     def post(self, request, *args, **kwargs):
         serializer = DoctorLoginSerializer(data=request.data)
         
@@ -139,6 +139,7 @@ class CheckAvailabilityView(APIView):
             date = serializer.validated_data['date']
             time = serializer.validated_data['time']
             
+            print(doctor, date, time)
             # Check if an appointment already exists
             appointment_exists = BookUser.objects.filter(
                 doctor=doctor,

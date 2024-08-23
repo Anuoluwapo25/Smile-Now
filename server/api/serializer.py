@@ -89,7 +89,7 @@ class DoctorLoginSerializer(serializers.Serializer):
         print(email, password)
 
         if email and password:
-            user = authenticate(request=None, email=email, password=password)
+            user = authenticate(request=None, username=email, password=password)
 
             print(user)
             if user:
