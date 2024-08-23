@@ -64,7 +64,6 @@
   border: 1px solid #ccc;
   font-size: 16px;
 }
-  
 
 /* Error styling for fields */
 .form-select-error,
@@ -104,6 +103,16 @@
 .form-submit-button:disabled {
   background: #95a5a6;
   cursor: not-allowed;
+}
+
+/* Success state for the button */
+.form-submit-button.form-submit-success {
+  background: #27ae60; /* Green background */
+  color: white;
+}
+
+.form-submit-button.form-submit-success .fa-check-circle {
+  color: white;
 }
 
 /* Error messages styling */

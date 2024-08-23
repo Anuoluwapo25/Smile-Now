@@ -61,9 +61,9 @@
 }
 
 .nav-links:hover {
-  border-bottom: 4px solid #f7792b;
+  border-bottom: 4px solid #2bf765;
   transition: all 0.2s ease-out;
-  border-radius: 10px;
+  border-radius: 2px;
 }
 
 .fa-bars {
