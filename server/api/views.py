@@ -52,6 +52,8 @@ class LoginView(APIView):
     
 
 class DoctorLoginView(APIView):
+    permission_classes = [permissions.AllowAny]
+    
     def post(self, request, *args, **kwargs):
         serializer = DoctorLoginSerializer(data=request.data)
         
