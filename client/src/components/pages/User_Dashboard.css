@@ -1,152 +1,185 @@
 /* Container for the entire dashboard */
 .dashboard-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  /* Header styles */
-  .welcome-header {
-    font-size: 2.5rem;
-    text-align: center;
-    font-weight: bold;
-    color: rgb(5, 138, 240);
-    margin-bottom: 2rem;
-    font-style: italic;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  /* Profile section styling */
-  .profile-section {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    
-  }
-  
-  .profile-section h2 {
-    font-size: 1 rem;
-    margin-bottom: 1rem;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  /* Summary section styling */
-  .summary-section {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-  }
-  
-  .summary-section h2 {
-    font-size: 1 rem;
-    margin-bottom: 1rem;
-    font-family:'Times New Roman', Times, serif
-  }
-  
-  /* Appointments section styling */
-  .appointments-section {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-  }
-  
-  .appointments-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .book-appointment-button {
-    background-color: rgb(5, 138, 240);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .book-appointment-button:hover {
-    background-color:rgb(5, 138, 240); /* Darker green */
-  }
-  
-  .no-appointments {
-    text-align: center;
-    color: #4a5568; /* Gray color */
-    font-style: italic;
-    font-family:'Times New Roman', Times, serif
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-  }
-  
-  /* Appointments list styling */
-  .appointments-list {
-    list-style: none;
-    padding: 0;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .appointment-item {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .appointment-title {
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .appointments-header h2 {
-    font-family: 'Times New Roman', Times, serif;
-  }
-  .cancel-button {
-    background: none;
-    color: #e53e3e; /* Red color */
-    border: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .cancel-button:hover {
-    color: #c53030; /* Darker red */
-  }
-  
-  /* Tips section styling */
-  .tips-section {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .tips-section h2 {
-    font-size: 1 rem;
-    margin-bottom: 1rem;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .tips-list {
-    list-style-type: circle;
-    padding-left: 20px;
-  }
-  
-  .loading {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 1.25rem;
-  }
-  
+/* Header styles */
+.welcome-header {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(5, 138, 240);
+  margin-bottom: 2rem;
+  font-style: italic;
+  font-family: 'Arial', sans-serif;
+}
+
+.welcome-header i {
+  margin-right: 10px;
+}
+
+/* Profile section styling */
+.profile-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-family: 'Arial', sans-serif;
+}
+
+.profile-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: rgb(5, 138, 240);
+  font-weight: 600;
+}
+
+.profile-section i {
+  margin-right: 10px;
+}
+
+/* Summary section styling */
+.summary-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-family:'Arial', sans-serif;
+}
+
+.summary-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: rgb(5, 138, 240);
+  font-weight: 600;
+}
+
+.summary-section i {
+  margin-right: 10px;
+}
+
+/* Appointments section styling */
+.appointments-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.appointments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.appointments-header i {
+  margin-right: 10px;
+}
+
+.book-appointment-button {
+  background-color: rgb(5, 138, 240);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.book-appointment-button i {
+  margin-right: 8px;
+}
+
+.book-appointment-button:hover {
+  background-color: rgb(4, 116, 192); /* Slightly darker shade */
+  transform: scale(1.05);
+}
+
+.no-appointments {
+  text-align: center;
+  color: #4a5568;
+  font-style: italic;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Appointments list styling */
+.appointments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.appointment-item {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appointment-title {
+  font-weight: bold;
+}
+
+.appointment-item p {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.cancel-button {
+  background: none;
+  color: #e53e3e;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.cancel-button:hover {
+  color: #c53030;
+}
+
+/* Tips section styling */
+.tips-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.tips-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: rgb(5, 138, 240);
+  font-weight: 600;
+}
+
+.tips-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.tips-list li {
+  margin-bottom: 10px;
+}
+
+/* Loading spinner */
+.loading {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-family: 'Arial', sans-serif;
+}

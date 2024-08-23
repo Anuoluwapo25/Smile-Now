@@ -16,14 +16,9 @@ export default function Dashboard() {
 
   const fetchUserAndBookings = async () => {
     try {
-      // Simulate fetching user data from localStorage
       const userData = JSON.parse(localStorage.getItem('user') || '{}');
       setUser(userData);
-
-      // Retrieve the token from localStorage (or any other storage you use)
       const token = localStorage.getItem('token');
-
-      // Fetch bookings from the Django backend
       const response = await fetch('http://127.0.0.1:8000/booking/', {
         method: 'GET',
         headers: {
@@ -71,50 +66,50 @@ export default function Dashboard() {
     });
   };
 
-  if (loading) return <div className="loading">Loading...</div>;
+  if (loading) return <div className="loading"><i className="fas fa-spinner fa-spin"></i> Loading...</div>;
 
   return (
     <div className="dashboard-container">
       <h1 className="welcome-header">
-        Welcome, {profile?.first_name || 'Patient'}!
+        <i className="fas fa-user-circle"></i> Welcome, {profile?.first_name || 'Patient'}!
       </h1>
 
       <div className="profile-section">
-        <h2>USER PROFILE</h2>
-        <p>Name: {profile?.first_name} {profile?.last_name}</p>
-        <p>Email: {profile?.email}</p>
+        <h2><i className="fas fa-user"></i> USER PROFILE</h2>
+        <p><i className="fas fa-id-badge"></i> Name: {profile?.first_name} {profile?.last_name}</p>
+        <p><i className="fas fa-envelope"></i> Email: {profile?.email}</p>
       </div>
 
       <div className="summary-section">
-        <h2>DENTAL HEALTH SUMMARY</h2>
-        <p>Next checkup due: {user?.nextCheckup || 'Not scheduled'}</p>
-        <p>Last visit: {user?.lastVisit || 'N/A'}</p>
+        <h2><i className="fas fa-calendar-day"></i> DENTAL HEALTH SUMMARY</h2>
+        <p><i className="fas fa-calendar-check"></i> Next checkup due: {user?.nextCheckup || 'Not scheduled'}</p>
+        <p><i className="fas fa-calendar-times"></i> Last visit: {user?.lastVisit || 'N/A'}</p>
       </div>
 
       <div className="appointments-section">
         <div className="appointments-header">
-          <h2>UPCOMING APPOINTMENTS</h2>
+          <h2><i className="fas fa-calendar-alt"></i> UPCOMING APPOINTMENTS</h2>
           <button 
             onClick={handleBookAppointment}
             className="book-appointment-button"
           >
-            Book New Appointment
+            <i className="fas fa-calendar-plus"></i> Book New Appointment
           </button>
         </div>
 
         {bookings.length === 0 ? (
-          <p className="no-appointments">You have no upcoming appointments.</p>
+          <p className="no-appointments"><i className="fas fa-exclamation-circle"></i> You have no upcoming appointments.</p>
         ) : (
           <ul className="appointments-list">
             {bookings.map((booking) => (
               <li key={booking.id} className="appointment-item">
                 <div className="appointment-details">
-                  <p className="appointment-title">{booking.treatmentType || 'Dental Appointment'}</p>
-                  <p>Date: {formatDate(booking.date)}</p>
-                  <p>Time: {booking.time}</p>
+                  <p className="appointment-title"><i className="fas fa-tooth"></i> {booking.treatmentType || 'Dental Appointment'}</p>
+                  <p><i className="fas fa-calendar-day"></i> Date: {formatDate(booking.date)}</p>
+                  <p><i className="fas fa-clock"></i> Time: {booking.time}</p>
                 </div>
                 <button className="cancel-button">
-                  Cancel
+                  <i className="fas fa-times"></i> Cancel
                 </button>
               </li>
             ))}
@@ -123,13 +118,13 @@ export default function Dashboard() {
       </div>
 
       <div className="tips-section">
-        <h2>DENTAL HEALTH TIPS</h2>
+        <h2><i className="fas fa-lightbulb"></i> DENTAL HEALTH TIPS</h2>
         <ul className="tips-list">
-          <li>Brush your teeth twice a day for at least two minutes each time.</li>
-          <li>Floss daily to remove plaque between teeth.</li>
-          <li>Use fluoride toothpaste to prevent cavities.</li>
-          <li>Limit sugary snacks and drinks.</li>
-          <li>Schedule regular dental check-ups every six months.</li>
+          <li><i className="fas fa-check"></i> Brush your teeth twice a day for at least two minutes each time.</li>
+          <li><i className="fas fa-check"></i> Floss daily to remove plaque between teeth.</li>
+          <li><i className="fas fa-check"></i> Use fluoride toothpaste to prevent cavities.</li>
+          <li><i className="fas fa-check"></i> Limit sugary snacks and drinks.</li>
+          <li><i className="fas fa-check"></i> Schedule regular dental check-ups every six months.</li>
         </ul>
       </div>
     </div>

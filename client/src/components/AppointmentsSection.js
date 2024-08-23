@@ -15,6 +15,7 @@ export default function AppointmentsSection() {
   const [error, setError] = useState(null);
   const [formErrors, setFormErrors] = useState({});
   const [asyncValidationError, setAsyncValidationError] = useState(null);
+  const [success, setSuccess] = useState(false);  // State for success feedback
   const navigate = useNavigate();
 
   const validateForm = () => {
@@ -105,8 +106,13 @@ export default function AppointmentsSection() {
       }
 
       const data = await response.json();
-      setFormData(initialFormData);  // Reset the form data after successful submission
-      navigate('/booking-confirmation', { state: { booking: data } });
+      setSuccess(true);  // Set success state
+
+      setTimeout(() => {
+        setSuccess(false);
+        setFormData(initialFormData);  // Reset the form data after successful submission
+        navigate('/user_dashboard', { state: { booking: data } });
+      }, 2000);  // Wait for 2 seconds before navigating
     } catch (error) {
       setError(error.message);
     } finally {
@@ -115,97 +121,98 @@ export default function AppointmentsSection() {
   };
 
   return (
-            <div className="appointment-container">
-              <h1 className="appointment-title">Book Appointment</h1>
-              <form onSubmit={handleSubmit} className="appointment-form">
+    <div className="appointment-container">
+      <h1 className="appointment-title">Book Appointment</h1>
+      <form onSubmit={handleSubmit} className="appointment-form">
 
-              <div className="form-section">
-  <label htmlFor="service">SERVICE</label>
-  <div className="input-icon-wrapper">
-    <i className="fa fa-stethoscope input-icon"></i>
-    <select
-      name="service"
-      id="service"
-      onChange={handleChange}
-      className={`form-select ${formErrors.service ? 'form-select-error' : ''}`}
-      required
-      value={formData.service}
-    >
-      <option value="">Select a Service</option>
-      <option value="General Dentistry">General Dentistry</option>
-      <option value="Preventive Dentistry">Preventive Dentistry</option>
-      <option value="Teeth Whitening">Teeth Whitening</option>
-      <option value="Braces">Braces</option>
-      <option value="Dentures">Dentures</option>
-      <option value="Periodontics">Periodontics</option>
-      <option value="Oral Sedation">Oral Sedation</option>
-    </select>
-  </div>
-  {formErrors.service && <p className="form-error-message">{formErrors.service}</p>}
-</div>
+        <div className="form-section">
+          <label htmlFor="service">SERVICE</label>
+          <div className="input-icon-wrapper">
+            <i className="fa fa-stethoscope input-icon"></i>
+            <select
+              name="service"
+              id="service"
+              onChange={handleChange}
+              className={`form-select ${formErrors.service ? 'form-select-error' : ''}`}
+              required
+              value={formData.service}
+            >
+              <option value="">Select a Service</option>
+              <option value="General Dentistry">General Dentistry</option>
+              <option value="Preventive Dentistry">Preventive Dentistry</option>
+              <option value="Teeth Whitening">Teeth Whitening</option>
+              <option value="Braces">Braces</option>
+              <option value="Dentures">Dentures</option>
+              <option value="Periodontics">Periodontics</option>
+              <option value="Oral Sedation">Oral Sedation</option>
+            </select>
+          </div>
+          {formErrors.service && <p className="form-error-message">{formErrors.service}</p>}
+        </div>
 
-<div className="form-section">
-  <label htmlFor="doctor">DENTIST</label>
-  <div className="input-icon-wrapper">
-    <i className="fa fa-user-md input-icon"></i>
-    <select
-      name="doctor"
-      id="doctor"
-      onChange={handleChange}
-      className={`form-select ${formErrors.doctor ? 'form-select-error' : ''}`}
-      required
-      value={formData.doctor}
-    >
-      <option value="">Select a Dentist</option>
-      <option value="Doctor1">Dr. Becky</option>
-      <option value="Doctor2">Dr. Tems</option>
-      <option value="Doctor3">Dr. Kobby</option>
-    </select>
-  </div>
-  {formErrors.doctor && <p className="form-error-message">{formErrors.doctor}</p>}
-</div>
+        <div className="form-section">
+          <label htmlFor="doctor">DENTIST</label>
+          <div className="input-icon-wrapper">
+            <i className="fa fa-user-md input-icon"></i>
+            <select
+              name="doctor"
+              id="doctor"
+              onChange={handleChange}
+              className={`form-select ${formErrors.doctor ? 'form-select-error' : ''}`}
+              required
+              value={formData.doctor}
+            >
+              <option value="">Select a Dentist</option>
+              <option value="Doctor1">Dr. Becky</option>
+              <option value="Doctor2">Dr. Tems</option>
+              <option value="Doctor3">Dr. Kobby</option>
+            </select>
+          </div>
+          {formErrors.doctor && <p className="form-error-message">{formErrors.doctor}</p>}
+        </div>
 
-<div className="form-section">
-  <label htmlFor="date">DATE</label>
-  <div className="input-icon-wrapper">
-    <i className="fa fa-calendar input-icon"></i>
-    <input
-      type="date"
-      name="date"
-      id="date"
-      onChange={handleChange}
-      className={`form-input ${formErrors.date ? 'form-input-error' : ''}`}
-      required
-      value={formData.date}
-    />
-  </div>
-  {formErrors.date && <p className="form-error-message">{formErrors.date}</p>}
-</div>
+        <div className="form-section">
+          <label htmlFor="date">DATE</label>
+          <div className="input-icon-wrapper">
+            <i className="fa fa-calendar input-icon"></i>
+            <input
+              type="date"
+              name="date"
+              id="date"
+              onChange={handleChange}
+              className={`form-input ${formErrors.date ? 'form-input-error' : ''}`}
+              required
+              value={formData.date}
+            />
+          </div>
+          {formErrors.date && <p className="form-error-message">{formErrors.date}</p>}
+        </div>
 
-<div className="form-section">
-  <label htmlFor="time">TIME</label>
-  <div className="input-icon-wrapper">
-    <i className="fa fa-clock input-icon"></i>
-    <input
-      type="time"
-      name="time"
-      id="time"
-      onChange={handleChange}
-      className={`form-input ${formErrors.time ? 'form-input-error' : ''}`}
-      required
-      value={formData.time}
-    />
-  </div>
-  {formErrors.time && <p className="form-error-message">{formErrors.time}</p>}
-</div>
-
+        <div className="form-section">
+          <label htmlFor="time">TIME</label>
+          <div className="input-icon-wrapper">
+            <i className="fa fa-clock input-icon"></i>
+            <input
+              type="time"
+              name="time"
+              id="time"
+              onChange={handleChange}
+              className={`form-input ${formErrors.time ? 'form-input-error' : ''}`}
+              required
+              value={formData.time}
+            />
+          </div>
+          {formErrors.time && <p className="form-error-message">{formErrors.time}</p>}
+        </div>
 
         <button
           type="submit"
-          disabled={loading}
-          className="form-submit-button"
+          disabled={loading || success}
+          className={`form-submit-button ${success ? 'form-submit-success' : ''}`}
         >
-          {loading ? <i className="fa fa-spinner fa-spin"></i> : 'Book Appointment'}
+          {loading ? <i className="fa fa-spinner fa-spin"></i> 
+                   : success ? <i className="fa fa-check-circle"></i> 
+                   : 'Book Appointment'}
         </button>
       </form>
       {asyncValidationError && <p className="async-error-message">{asyncValidationError}</p>}
