@@ -86,10 +86,12 @@ class DoctorLoginSerializer(serializers.Serializer):
     def validate(self, data):
         email = data.get('email')
         password = data.get('password')
+        print(email, password)
 
         if email and password:
             user = authenticate(request=None, email=email, password=password)
 
+            print(user)
             if user:
                 try:
                     doctor = Doctor.objects.get(user=user)
@@ -121,24 +123,55 @@ class DoctorLoginSerializer(serializers.Serializer):
 #         )
 
 
+# class BookingSerializer(serializers.Serializer):
+#     id = serializers.IntegerField(read_only=True)
+#     doctor = serializers.CharField(max_length=100)
+#     service = serializers.CharField(max_length=100)
+#     date = serializers.DateField()
+#     time = serializers.TimeField()
+#     name = serializers.PrimaryKeyRelatedField(read_only=True)
+
+#     def create(self, validated_data):
+#         return BookUser.objects.create(**validated_data)
+
+#     def update(self, instance, validated_data):
+#         instance.doctor = validated_data.get('doctor', instance.doctor)
+#         instance.service = validated_data.get('service', instance.service)
+#         instance.date = validated_data.get('date', instance.date)
+#         instance.time = validated_data.get('time', instance.time)
+#         instance.save()
+#         return instance
+
 class BookingSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    doctor = serializers.CharField(max_length=100)
-    service = serializers.CharField(max_length=100)
-    date = serializers.DateField()
+    service = serializers.CharField(max_length=255)
+    doctor = serializers.CharField(max_length=255)
+    name = serializers.PrimaryKeyRelatedField(queryset=CustomerUser.objects.all()) 
     time = serializers.TimeField()
-    user = serializers.PrimaryKeyRelatedField(read_only=True)
+    date = serializers.DateField()
+    is_completed = serializers.BooleanField(default=False)
 
     def create(self, validated_data):
-        return BookUser.objects.create(**validated_data)
-
+        book = BookUser.objects.create(
+            name=validated_data['name'],
+            service=validated_data['service'],
+            doctor=validated_data['doctor'],
+            time=validated_data['time'],
+            date=validated_data['date'],
+            is_completed=validated_data.get('is_completed', False)
+        )
+        return book
+    
     def update(self, instance, validated_data):
-        instance.doctor = validated_data.get('doctor', instance.doctor)
+        instance.name = validated_data.get('name', instance.name)
         instance.service = validated_data.get('service', instance.service)
-        instance.date = validated_data.get('date', instance.date)
+        instance.doctor = validated_data.get('doctor', instance.doctor)
         instance.time = validated_data.get('time', instance.time)
+        instance.date = validated_data.get('date', instance.date)
+        instance.is_completed = validated_data.get('is_completed', instance.is_completed)
         instance.save()
         return instance
+
 
 class AvailabilityCheckSerializer(serializers.Serializer):
     doctor = serializers.CharField()

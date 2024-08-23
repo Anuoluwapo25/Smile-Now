@@ -63,6 +63,7 @@
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
 class CustomerUser(AbstractUser):
     username = models.CharField(max_length=255, unique=True)
@@ -89,17 +90,22 @@ class CustomerUser(AbstractUser):
 #         return f"{self.service} with {self.doctor} on {self.date}"
 
 class BookUser(models.Model):
-    doctor = models.CharField(max_length=100)
-    service = models.CharField(max_length=100)
-    date = models.DateField()
-    time = models.TimeField()
     name = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
+    doctor = models.CharField(max_length=100, blank=True)
+    service = models.CharField(max_length=100, blank=True)
+    date = models.DateField(max_length=15, blank=True)
+    time = models.TimeField(default=timezone.now().time())
+    is_completed = models.BooleanField(default=False)
 
-    class Meta:
-        unique_together = ['doctor', 'date', 'time']
-        
+
     def __str__(self):
-        return f"{self.service} with {self.doctor} on {self.date} at {self.time} for {self.name}"
+        return self.doctor
+    
+    # class Meta:
+    #     unique_together = ['doctor', 'date', 'time']
+        
+    # def __str__(self):
+    #     return f"{self.service} with {self.doctor} on {self.date} at {self.time} for {self.name}"
 
 class Doctor(models.Model):
     user = models.OneToOneField(CustomerUser, on_delete=models.CASCADE, related_name='doctor_profile')
@@ -109,4 +115,4 @@ class Doctor(models.Model):
     def __str__(self):
         return f"Dr. {self.user.first_name} {self.user.last_name} - {self.specialization}"
 
-    
+    # pbkdf2_sha256$720000$3r61lpRSDyuhF5DAWR5qd4$YyRTGNM1ZnBhepy6pzxuapugkwScStzGaiPTjLbNu+U=
