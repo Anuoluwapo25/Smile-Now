@@ -238,8 +238,12 @@ export default function AppointmentsSection() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formErrors, setFormErrors] = useState({});
+<<<<<<< HEAD
   const [asyncValidationError, setAsyncValidationError] = useState(null);
   const [availableTimes, setAvailableTimes] = useState([]);
+=======
+  const [success, setSuccess] = useState(false);  // State for success feedback
+>>>>>>> 875885670d8e7167be504cc0fd530d538e1f0e0d
   const navigate = useNavigate();
 
   const validateForm = () => {
@@ -251,6 +255,7 @@ export default function AppointmentsSection() {
     return errors;
   };
 
+<<<<<<< HEAD
   const checkAvailability = async () => {
     if (formData.doctor && formData.date) {
       try {
@@ -277,6 +282,8 @@ export default function AppointmentsSection() {
     checkAvailability();
   }, [formData.doctor, formData.date]);
 
+=======
+>>>>>>> 875885670d8e7167be504cc0fd530d538e1f0e0d
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -314,7 +321,6 @@ export default function AppointmentsSection() {
 
     setLoading(true);
     setError(null);
-    setAsyncValidationError(null);
 
     try {
       const token = localStorage.getItem('token');
@@ -438,7 +444,6 @@ export default function AppointmentsSection() {
           {loading ? <i className="fa fa-spinner fa-spin"></i> : 'Book Appointment'}
         </button>
       </form>
-      {asyncValidationError && <p className="async-error-message">{asyncValidationError}</p>}
       {error && <p className="error-message">{error}</p>}
     </div>
   );

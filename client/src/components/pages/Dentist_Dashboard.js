@@ -1,13 +1,13 @@
 import React from "react";
 import "./Dentist_Dashboard.css";
 import DentistProfile from "../DentistProfile";
-import AppointmentsSection from "../AppointmentsSection";
+import DoctorsAppointment from "../DoctorsAppointment";
 
 function Dentist_Dashboard () {
     return (
         <>
         <DentistProfile />
-        <AppointmentsSection />
+        <DoctorsAppointment />
         </>
     )
 }
