@@ -1,55 +1,55 @@
-import React from 'react'; // Import React library for component creation
-import './Footer.css'; // Import CSS styles for the Footer component
-import { Link } from 'react-router-dom'; // Import Link for client-side routing
+import React from 'react'; 
+import './Footer.css'; 
+import { Link } from 'react-router-dom'; 
 
 function Footer() {
   return (
-    <div className='footer-container'> {/* Main container for the footer */}
-      <div className='footer-links'> {/* Container for footer links */}
-        <div className='footer-link-wrapper'> {/* Wrapper for grouped footer links */}
-          <div className='footer-link-items'> {/* Section for 'About Us' links */}
-            <h2>About Us</h2>
-            <Link to='/'>Investors</Link> {/* Link to the 'Investors' page */}
-            <Link to='/'>Terms of Service</Link> {/* Link to the 'Terms of Service' page */}
+    <div className='footer-container'> 
+      <div className='footer-links'> 
+        <div className='footer-link-wrapper'> 
+          <div className='footer-link-items'> 
+            <h2>ABOUT US</h2>
+            <Link to='/'>Investors</Link> 
+            <Link to='/'>Terms of Service</Link> 
           </div>
-          <div className='footer-link-items'> {/* Section for 'Contact Us' links */}
-            <h2>Contact Us</h2>
-            <Link to='/'>Contact</Link> {/* Link to the 'Contact' page */}
-            <Link to='/'>Support</Link> {/* Link to the 'Support' page */}
+          <div className='footer-link-items'>
+            <h2>CONTACT US</h2>
+            <Link to='/'>Contact</Link> 
+            <Link to='/'>Support</Link>
           </div>
         </div>
-        <div className='footer-link-wrapper'> {/* Wrapper for grouped footer links */}
-          <div className='footer-link-items'> {/* Section for 'Videos' links */}
-            <h2>Videos</h2>
-            <Link to='/'>Ambassadors</Link> {/* Link to the 'Ambassadors' page */}
-            <Link to='/'>Influencer</Link> {/* Link to the 'Influencer' page */}
+        <div className='footer-link-wrapper'> 
+          <div className='footer-link-items'> 
+            <h2>VIDEOS</h2>
+            <Link to='/'>Ambassadors</Link>
+            <Link to='/'>Influencer</Link> 
           </div>
-          <div className='footer-link-items'> {/* Section for 'Social Media' links */}
-            <h2>Social Media</h2>
-            <Link to='/'>Instagram</Link> {/* Link to the 'Instagram' page */}
-            <Link to='/'>Facebook</Link> {/* Link to the 'Facebook' page */}
-            <Link to='/'>Youtube</Link> {/* Link to the 'Youtube' page */}
-            <Link to='/'>Twitter</Link> {/* Link to the 'Twitter' page */}
+          <div className='footer-link-items'> 
+            <h2>@smilenow</h2>
+            <Link to='/'>Instagram</Link> 
+            <Link to='/'>Facebook</Link> 
+            <Link to='/'>Youtube</Link> 
+            <Link to='/'>Twitter</Link> 
           </div>
         </div>
       </div>
-      <section className='social-media'> {/* Section for social media links */}
-        <div className='social-media-wrap'> {/* Wrapper for social media links */}
-          <div className='footer-logo'> {/* Container for the footer logo */}
+      <section className='social-media'> 
+        <div className='social-media-wrap'>
+          <div className='footer-logo'> 
             <Link to='/' className='social-logo'>
               SmileNow
-              <i className='fab fa-typo3' /> {/* Logo icon */}
+              <i className='fab fa-typo3' /> 
             </Link>
           </div>
-          <small className='website-rights'>SmileNow © 2024</small> {/* Copyright text */}
-          <div className='social-icons'> {/* Container for social media icons */}
+          <small className='website-rights'>SmileNow © 2024</small> 
+          <div className='social-icons'> 
             <Link
               className='social-icon-link facebook'
               to='/'
               target='_blank'
               aria-label='Facebook'
             >
-              <i className='fab fa-facebook-f' /> {/* Facebook icon */}
+              <i className='fab fa-facebook-f' /> 
             </Link>
             <Link
               className='social-icon-link instagram'
@@ -57,7 +57,7 @@ function Footer() {
               target='_blank'
               aria-label='Instagram'
             >
-              <i className='fab fa-instagram' /> {/* Instagram icon */}
+              <i className='fab fa-instagram' /> 
             </Link>
             <Link
               className='social-icon-link youtube'
@@ -65,7 +65,7 @@ function Footer() {
               target='_blank'
               aria-label='Youtube'
             >
-              <i className='fab fa-youtube' /> {/* Youtube icon */}
+              <i className='fab fa-youtube' /> 
             </Link>
             <Link
               className='social-icon-link twitter'
@@ -73,7 +73,7 @@ function Footer() {
               target='_blank'
               aria-label='Twitter'
             >
-              <i className='fab fa-twitter' /> {/* Twitter icon */}
+              <i className='fab fa-twitter' /> 
             </Link>
             <Link
               className='social-icon-link linkedin'
@@ -81,7 +81,7 @@ function Footer() {
               target='_blank'
               aria-label='LinkedIn'
             >
-              <i className='fab fa-linkedin' /> {/* LinkedIn icon */}
+              <i className='fab fa-linkedin' /> 
             </Link>
           </div>
         </div>
@@ -90,4 +90,4 @@ function Footer() {
   );
 }
 
-export default Footer; // Export the Footer component
+export default Footer;
