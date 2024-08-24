@@ -1,0 +1,111 @@
+.doctors-appointment-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  .appointments-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .appointment-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .appointment-info p {
+    margin: 5px 0;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .appointment-actions {
+    position: relative;
+  }
+  
+  .appointment-menu {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .appointment-menu button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .appointment-menu button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .confirmation-popup {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffe5e5;
+    border: 1px solid #f5c2c2;
+    border-radius: 8px;
+  }
+  
+  .confirmation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .confirmation-buttons button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .confirmation-buttons button:first-child {
+    background-color: green;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  .confirmation-buttons button:last-child {
+    background-color: red;
+    color: white;
+  }
+  
+  .notification {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+  }
+  
+  .notification.success {
+    background-color: green;
+  }
+  
+  .notification.warning {
+    background-color: yellow;
+    color: black;
+  }
+  
+  .notification.error {
+    background-color: red;
+  }
+  

@@ -14,7 +14,6 @@ export default function AppointmentsSection() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formErrors, setFormErrors] = useState({});
-  const [asyncValidationError, setAsyncValidationError] = useState(null);
   const [success, setSuccess] = useState(false);  // State for success feedback
   const navigate = useNavigate();
 
@@ -25,35 +24,6 @@ export default function AppointmentsSection() {
     if (!formData.date) errors.date = 'Date is required.';
     if (!formData.time) errors.time = 'Time is required.';
     return errors;
-  };
-
-  const validateTimeSlot = async () => {
-    try {
-      const response = await fetch('http://127.0.0.1:8000/check-availability/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          doctor: formData.doctor,
-          date: formData.date,
-          time: formData.time,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to check availability');
-      }
-
-      const data = await response.json();
-      if (!data.available) {
-        throw new Error('Selected time slot is not available. Please choose another time.');
-      }
-
-      return null;
-    } catch (error) {
-      return error.message;
-    }
   };
 
   const handleChange = (e) => {
@@ -77,16 +47,8 @@ export default function AppointmentsSection() {
 
     setLoading(true);
     setError(null);
-    setAsyncValidationError(null);
 
     try {
-      const asyncError = await validateTimeSlot();
-      if (asyncError) {
-        setAsyncValidationError(asyncError);
-        setLoading(false);
-        return;
-      }
-
       const token = localStorage.getItem('token');
       if (!token) {
         throw new Error('Authentication token not found. Please log in.');
@@ -100,7 +62,7 @@ export default function AppointmentsSection() {
         },
         body: JSON.stringify(formData),
       });
-      console.log(token)
+
       if (!response.ok) {
         throw new Error('Failed to book appointment');
       }
@@ -215,7 +177,6 @@ export default function AppointmentsSection() {
                    : 'Book Appointment'}
         </button>
       </form>
-      {asyncValidationError && <p className="async-error-message">{asyncValidationError}</p>}
       {error && <p className="error-message">{error}</p>}
     </div>
   );

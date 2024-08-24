@@ -107,6 +107,12 @@ export default function Dashboard() {
     navigate('/appointmentssection');
   };
 
+  const handleLogout = () => {
+    // Clear local storage or any other logout related tasks
+    localStorage.clear();
+    navigate('/'); // Redirect to home page
+  };
+
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -124,7 +130,6 @@ export default function Dashboard() {
       </h1>
 
       <div className="profile-section">
-        <h2><FontAwesomeIcon icon={faUser} /> USER PROFILE</h2>
         <div className="profile-picture-container">
           <div className="profile-picture">
             {profilePicture ? (
@@ -132,17 +137,17 @@ export default function Dashboard() {
             ) : (
               <FontAwesomeIcon icon={faUser} size="4x" />
             )}
+            <label htmlFor="profilePictureInput" className="camera-icon">
+              <FontAwesomeIcon icon={faCamera} size="2x" />
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleProfilePictureChange}
+              id="profilePictureInput"
+              style={{ display: 'none' }}
+            />
           </div>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleProfilePictureChange}
-            id="profilePictureInput"
-            style={{ display: 'none' }}
-          />
-          <label htmlFor="profilePictureInput" className="camera-icon">
-            <FontAwesomeIcon icon={faCamera} size="2x" />
-          </label>
         </div>
         {isEditing ? (
           <>
@@ -151,12 +156,14 @@ export default function Dashboard() {
               value={tempFirstName}
               onChange={(e) => setTempFirstName(e.target.value)}
               placeholder="First Name"
+              className="profile-input"
             />
             <input
               type="text"
               value={tempLastName}
               onChange={(e) => setTempLastName(e.target.value)}
               placeholder="Last Name"
+              className="profile-input"
             />
           </>
         ) : (
@@ -169,7 +176,7 @@ export default function Dashboard() {
           <FontAwesomeIcon icon={faEdit} />
           {isEditing ? ' Save' : ' Edit'}
         </button>
-        <button className="logout-button" onClick={() => console.log('Logout')}>
+        <button className="logout-button" onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOutAlt} />
           Logout
         </button>
