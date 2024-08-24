@@ -53,7 +53,7 @@ class LoginView(APIView):
 
 class DoctorLoginView(APIView):
     permission_classes = [permissions.AllowAny]
-    
+
     def post(self, request, *args, **kwargs):
         serializer = DoctorLoginSerializer(data=request.data)
         
@@ -121,6 +121,15 @@ class BookingView(APIView):
         else:
             print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def get(self, request):
+        # Get upcoming bookings
+        upcoming_bookings = BookUser.objects.filter(
+            name=request.user,
+            date__gte=timezone.now().date(),
+            is_completed=False
+        ).order_by('date', 'time')
+        serializer = BookingSerializer(upcoming_bookings, many=True)
+        return Response(serializer.data)
 
 class CheckAvailabilityView(APIView):
     def post(self, request):

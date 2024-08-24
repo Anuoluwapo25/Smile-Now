@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-from .models import CustomerUser, Doctor, BookUser
+from .models import CustomerUser, Doctor, BookUser, Availability
 
 
 class CustomerUserSerializer(serializers.Serializer):
@@ -123,24 +123,52 @@ class DoctorLoginSerializer(serializers.Serializer):
 
 class BookingSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    doctor = serializers.CharField(max_length=100)
-    service = serializers.CharField(max_length=100)
-    date = serializers.DateField()
+    services = serializers.CharField(max_length=255)
+    doctor = serializers.CharField(max_length=255)
+    name = serializers.PrimaryKeyRelatedField(queryset=CustomerUser.objects.all()) 
     time = serializers.TimeField()
-    user = serializers.PrimaryKeyRelatedField(read_only=True)
+    date = serializers.DateField()
+    is_completed = serializers.BooleanField(default=False)
 
     def create(self, validated_data):
-        return BookUser.objects.create(**validated_data)
-
+        book = BookUser.objects.create(
+            name=validated_data['name'],
+            services=validated_data['services'],
+            doctor=validated_data['doctor'],
+            time=validated_data['time'],
+            date=validated_data['date'],
+            is_completed=validated_data.get('is_completed', False)
+        )
+        return book
+    
     def update(self, instance, validated_data):
-        instance.doctor = validated_data.get('doctor', instance.doctor)
-        instance.service = validated_data.get('service', instance.service)
-        instance.date = validated_data.get('date', instance.date)
+        instance.name = validated_data.get('name', instance.name)
+        instance.services = validated_data.get('services', instance.services)
+        instance.doctor = validated_data.get('doctor', instance.dentist)
         instance.time = validated_data.get('time', instance.time)
+        instance.date = validated_data.get('date', instance.date)
+        instance.is_completed = validated_data.get('is_completed', instance.is_completed)
         instance.save()
         return instance
+
 
 class AvailabilityCheckSerializer(serializers.Serializer):
     doctor = serializers.CharField()
     date = serializers.DateField()
     time = serializers.TimeField()
+
+class DoctorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Doctor
+        fields = ['id', 'user', 'specialization']
+
+class AvailabilitySerializer(serializers.ModelSerializer):
+    doctor = DoctorSerializer(read_only=True)
+
+    class Meta:
+        model = Availability
+        fields = ['id', 'doctor', 'date', 'start_time', 'end_time', 'is_available']
+
+    def create(self, validated_data):
+        doctor = self.context['request'].user.doctor_profile
+        return Availability.objects.create(doctor=doctor, **validated_data)
