@@ -11,5 +11,5 @@ urlpatterns = [
     path('doctor/login/', DoctorLoginView.as_view(), name='doctor-login'),
     path('check-availability/', CheckAvailabilityView.as_view(), name='check-availability'),
     # path('doctor/<int:doctor_id>/', views.doctor_dashboard, name='doctor-dashboard'),
-    # path('user/details/', views.user_details, name='user-details'),
+    path('user-profile/', views.user_profile, name='user-profile'),
 ]

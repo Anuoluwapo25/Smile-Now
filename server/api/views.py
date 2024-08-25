@@ -124,7 +124,7 @@ class BookingView(APIView):
     def get(self, request):
         # Get upcoming bookings
         upcoming_bookings = Booking.objects.filter(
-g            name=request.user,
+            name=request.user,
             date__gte=timezone.now().date(),
             is_completed=False
         ).order_by('date', 'time')
@@ -151,13 +151,13 @@ class CheckAvailabilityView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def user_details(request):
-#     user = request.user
-#     user_data = {
-#         'firstname': user.first_name,
-#         'lastname': user.last_name,
-#         'email': user.email
-#     }
-#     return Response(user_data)
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def user_profile(request):
+    user = request.user
+    user_data = {
+        'firstname': user.first_name,
+        'lastname': user.last_name,
+        'email': user.email
+    }
+    return Response(user_data)

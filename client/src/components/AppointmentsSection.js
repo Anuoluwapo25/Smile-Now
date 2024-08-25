@@ -14,10 +14,6 @@ export default function AppointmentsSection() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formErrors, setFormErrors] = useState({});
-<<<<<<< HEAD
-  const [success, setSuccess] = useState(false);  // State for success feedback
-=======
->>>>>>> b424290a3ee398ba0367d53ecc7cced1bd7d8937
   const navigate = useNavigate();
 
   const validateForm = () => {
