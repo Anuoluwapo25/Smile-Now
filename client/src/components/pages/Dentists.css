@@ -8,77 +8,90 @@
 }
 
 .dentists__header h1 {
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #333;
+    color: #0053b6;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .dentists__header p {
-    font-size: 18px;
-    font-weight: 400;
-    color: #666;
+    font-size: 22px;
+    font-weight: 500;
+    color: black;
     margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .dentists__container {
     display: flex;
     justify-content: center; 
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    gap: 20px; /* Space between items */
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
-.circle {
-    width: 300px; /* Circle diameter */
-    height: 300px; /* Circle diameter */
-    background: #05070f;
+.dentist__card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    max-width: 350px;
+}
+
+.profile__section {
+    text-align: center;
+}
+
+.circle { 
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Shadow effect*/
-    transition: all 0.3s ease; /* Smooth transition */
-    position: relative; /* For positioning pseudo-elements */
-    text-align: center;
+    background-color: #05070f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin: 0 auto 15px auto;
 }
 
-.first-dentist{
-    background-image:url("../../images/dentists/1.jpg");
-    background-position: right;
-}
-.second-dentist{
-    background-image:url("../../images/dentists/2.jpg");
-    background-position:center;
-    background-size: cover;
-}
-.third-dentist{
-    background-image:url("../../images/dentists/3.jpg");
+.first-dentist {
+    background-image: url("../../images/dentists/1.jpg");
     background-position: center;
     background-size: cover;
 }
 
+.second-dentist {
+    background-image: url("../../images/dentists/2.jpg");
+    background-position: center;
+    background-size: cover;
+}
 
+.third-dentist {
+    background-image: url("../../images/dentists/3.jpg");
+    background-position: center;
+    background-size: cover;
+}
 
-.dentists__container h3{
-    text-align: center;
-    color: #333;
+.dentists__container h3 {
+    color: black;
     margin-top: 10px;
+    font-size: 22px;
     text-transform: capitalize;
 }
 
-.icon {
-    font-size: 60px; /* Size of the icon */
-    color: #fff; /* White color for the icon */
-    z-index: 1; /* Ensure icon is above the pseudo-element */
-}
-
-.service__meta {
-    color: #fff;
+.description__section {
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
     margin-top: 10px;
+    text-align: justify;
 }
 
-.service__text {
-    font-size: 18px; /* Font size for text */
-    font-weight: 600;
+.description__section p {
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
 }
-
