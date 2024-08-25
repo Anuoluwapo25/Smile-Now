@@ -238,12 +238,7 @@ export default function AppointmentsSection() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formErrors, setFormErrors] = useState({});
-<<<<<<< HEAD
-  const [asyncValidationError, setAsyncValidationError] = useState(null);
-  const [availableTimes, setAvailableTimes] = useState([]);
-=======
   const [success, setSuccess] = useState(false);  // State for success feedback
->>>>>>> 875885670d8e7167be504cc0fd530d538e1f0e0d
   const navigate = useNavigate();
 
   const validateForm = () => {
@@ -255,35 +250,6 @@ export default function AppointmentsSection() {
     return errors;
   };
 
-<<<<<<< HEAD
-  const checkAvailability = async () => {
-    if (formData.doctor && formData.date) {
-      try {
-        const token = localStorage.getItem('token');
-        const response = await fetch(`http://127.0.0.1:8000/check-availability/?doctor=${formData.doctor}&date=${formData.date}`, {
-          headers: {
-            'Authorization': `Token ${token}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch availability');
-        }
-
-        const data = await response.json();
-        setAvailableTimes(data.available_times || []);
-      } catch (error) {
-        setError('Error checking availability: ' + error.message);
-      }
-    }
-  };
-
-  useEffect(() => {
-    checkAvailability();
-  }, [formData.doctor, formData.date]);
-
-=======
->>>>>>> 875885670d8e7167be504cc0fd530d538e1f0e0d
   const handleChange = (e) => {
     const { name, value } = e.target;
 
