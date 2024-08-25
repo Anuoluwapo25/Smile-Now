@@ -1,2 +1,2 @@
-SmileNow Project...
+README for testing
 
