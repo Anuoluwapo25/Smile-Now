@@ -6,7 +6,7 @@ from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.authtoken.models import Token
 from django.utils import timezone
-from .models import CustomerUser, BookUser, Doctor
+from .models import CustomerUser, Booking, Doctor
 from .serializer import RegisterSerializer, LoginSerializer, CustomerUserSerializer, DoctorLoginSerializer, BookingSerializer, AvailabilityCheckSerializer
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
@@ -123,8 +123,8 @@ class BookingView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     def get(self, request):
         # Get upcoming bookings
-        upcoming_bookings = BookUser.objects.filter(
-            name=request.user,
+        upcoming_bookings = Booking.objects.filter(
+g            name=request.user,
             date__gte=timezone.now().date(),
             is_completed=False
         ).order_by('date', 'time')

@@ -77,16 +77,16 @@ class CustomerUser(AbstractUser):
         return f"{self.first_name} {self.last_name}"
     
 
-class BookUser(models.Model):
-    name = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
-    services = models.CharField(max_length=255, blank=True)
-    doctor = models.CharField(max_length=255, blank=True)
-    date = models.DateField(max_length=15, blank=True)
-    time = models.TimeField(default=timezone.now)
-    is_completed = models.BooleanField(default=False)
+# class BookUser(models.Model):
+#     name = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
+#     services = models.CharField(max_length=255, blank=True)
+#     doctor = models.CharField(max_length=255, blank=True)
+#     date = models.DateField(max_length=15, blank=True)
+#     time = models.TimeField(default=timezone.now)
+#     is_completed = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.doctor
+#     def __str__(self):
+#         return self.doctor
 
     # class Meta:
     #     unique_together = ['doctor', 'date', 'time', 'service']
@@ -130,5 +130,16 @@ class Availability(models.Model):
 
     def __str__(self):
         return f"{self.doctor} - {self.date} {self.start_time}-{self.end_time}"
+    
+class Booking(models.Model):
+    name = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
+    services = models.CharField(max_length=255, blank=True)
+    doctor = models.CharField(max_length=255, blank=True)
+    date = models.DateField(max_length=15, blank=True)
+    time = models.TimeField(default=timezone.now)
+    is_completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.name} - {self.services}"
 
     

@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-from .models import CustomerUser, Doctor, BookUser, Availability
+from .models import CustomerUser, Doctor, Booking, Availability
 
 
 class CustomerUserSerializer(serializers.Serializer):
@@ -131,7 +131,7 @@ class BookingSerializer(serializers.Serializer):
     is_completed = serializers.BooleanField(default=False)
 
     def create(self, validated_data):
-        book = BookUser.objects.create(
+        book = Booking.objects.create(
             name=validated_data['name'],
             services=validated_data['services'],
             doctor=validated_data['doctor'],
