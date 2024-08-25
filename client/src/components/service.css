@@ -66,6 +66,7 @@ h1.heading {
     font-weight: 50;
     border: none;
     text-decoration: none;
+    color: white;
  }
 
  @media only screen and (max-width: 1024px) {
@@ -94,10 +95,10 @@ h1.heading {
    display: flex;
    align-items: center;
    justify-content: center;
-   text-align: center;
+   text-align: justify;
    font-family: 'Times New Roman', Times, serif;
    font-weight: 400;
-   font-size: large;
+   font-size: 20px;
 }
 
 .dentist-cleaning{

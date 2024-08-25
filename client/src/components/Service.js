@@ -21,11 +21,13 @@ function Service() {
                         </Link>
                     </div>
                     <div className="col__2 text-section">
-                        Dental cleaning is a preventive procedure to remove plaque, tartar, and stains from your teeth, helping to prevent cavities and gum disease. Regular cleanings can enhance your oral health and leave your mouth feeling fresh.
+                    Comprehensive Care with Our General Dentistry Service
+                    Experience top-notch oral health care with our General Dentistry Service, designed to address all aspects of your dental needs. Whether you're looking for routine check-ups, preventive care, or treatment for common dental issues, our general dentistry services have you covered. Our clinic provides a wide range of dental services tailored to maintain and improve your oral health.
                     </div>
 
                     <div className="col__2 text-section">
-                        Teeth whitening is a cosmetic procedure that lightens the color of your teeth. Using a bleaching agent, it effectively removes stains and discoloration, giving you a brighter, more confident smile.
+                    Brighten Your Smile with Our Professional Dental Whitening Service
+                    A radiant smile can light up a room, and our Dental Whitening Service is here to help you achieve just that. Say goodbye to stains and discoloration with our safe, effective, and fast teeth whitening treatments. Whether you have a special occasion coming up or just want to boost your confidence, our professional whitening solutions will give you a brighter, whiter smile. Using a bleaching agent, it effectively removes stains and discoloration, giving you a brighter, more confident smile.
                     </div>
                     <div className="col__2">
                         <Link to="/book-appointment" style={{ textDecoration: 'none' }}>
@@ -47,11 +49,13 @@ function Service() {
                         </Link>
                     </div>
                     <div className="col__2 text-section">
-                        A dental filling is a restorative procedure used to repair cavities or decay in your teeth. The decayed portion is removed, and the tooth is filled with a durable material like composite, amalgam, or gold.
+                    Protect Your Smile with Our Preventive Dentistry Service
+                    Prevention is the key to a lifetime of healthy smiles. Our Preventive Dentistry Service is designed to help you maintain optimal oral health by preventing dental problems before they start. With regular check-ups and proactive care, you can keep your teeth and gums in excellent condition. Early Detection of Issues: Regular dental check-ups allow us to catch potential problems like cavities, gum disease, and oral cancer early when they are easiest to treat.
                     </div>
 
                     <div className="col__2 text-section">
-                        Braces are orthodontic devices used to correct misaligned teeth and bite issues. The process involves fitting brackets and wires to gradually move your teeth into the correct position, improving both function and appearance.
+                    Achieve Your Perfect Smile with Our Advanced Braces Service
+                    Transform your smile with confidence through our Braces Service—the ideal solution for straightening teeth and achieving optimal oral health. Whether you're a teen or an adult, our customized braces are designed to meet your unique needs and lifestyle.Braces are orthodontic devices used to correct misaligned teeth and bite issues. The process involves fitting brackets and wires to gradually move your teeth into the correct position, improving both function and appearance.
                     </div>
                     <div className="col__2">
                         <Link to="/book-appointment" style={{ textDecoration: 'none' }}>
@@ -73,11 +77,14 @@ function Service() {
                         </Link>
                     </div>
                     <div className="col__2 text-section">
-                        A dental bridge is a fixed prosthetic device used to replace one or more missing teeth. The bridge is anchored to adjacent teeth or implants, effectively restoring both your smile and your ability to chew and speak properly.
+                    Rediscover Your Smile with Our Premium Dentures Service
+                    Are you missing teeth and looking for a reliable, natural-looking solution? Our Dentures Service offers you the perfect way to restore your smile, confidence, and oral functionality. A dental bridge is a fixed prosthetic device used to replace one or more missing teeth. The bridge is anchored to adjacent teeth or implants, effectively restoring both your smile and your ability to chew and speak properly.
                     </div>
 
                     <div className="col__2 text-section">
-                        A root canal is a treatment designed to save a tooth that is badly infected or decayed. During the procedure, the infected pulp is removed, the canal is cleaned and sealed, preventing further infection and saving the tooth from extraction.
+                    Experience Comfort and Calm with Our Dental Oral Sedation Service
+                    At our clinic, we understand that dental visits can be a source of anxiety for many patients. That’s why we offer Dental Oral Sedation—a safe and effective way to ensure your comfort throughout your dental procedures.
+                    Imagine undergoing your dental treatment in a state of deep relaxation, free from stress and fear. With our Dental Oral Sedation service, you can.
                     </div>
                     <div className="col__2">
                         <Link to="/book-appointment" style={{ textDecoration: 'none' }}>
