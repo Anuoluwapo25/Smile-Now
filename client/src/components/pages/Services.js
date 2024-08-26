@@ -10,12 +10,8 @@ function Services ()  {
         <Service/>
         <Footer />
     </>
-    );
-    
+    );   
 }
-
-
-
 
 export default Services;
  

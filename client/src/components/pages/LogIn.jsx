@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
-import "../../App.css"; // Import global styles
-import "./LogIn.css"; // Import styles specific to the LogIn component
+import "../../App.css";
+import "./LogIn.css";
 import { useNavigate, Link } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext'; // Import AuthContext
+import { AuthContext } from '../../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -66,7 +66,7 @@ const LogIn = () => {
     return (
         <div className='container'>
             <div className='header'>
-                <div className='text'>Log In</div>
+                <div className='text'>Welcome back!</div>
                 <div className="underline"></div>
             </div>
             <div className='inputs'>

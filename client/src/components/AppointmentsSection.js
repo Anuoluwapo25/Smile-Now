@@ -43,10 +43,9 @@ export default function AppointmentsSection() {
 
     setFormErrors({
       ...formErrors,
-      [name]: '', // Clear the specific field error when changing
+      [name]: '',
     });
 
-    // Reset time when doctor or date changes
     if (name === 'doctor' || name === 'date') {
       setFormData(prev => ({ ...prev, time: '' }));
     }
@@ -189,5 +188,3 @@ export default function AppointmentsSection() {
     </div>
   );
 }
-
-

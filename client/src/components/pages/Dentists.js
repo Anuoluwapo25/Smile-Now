@@ -27,10 +27,10 @@ function Dentists() {
                     <div className="profile__section">
                         <Link to="/book-appointment" className="circle pointer second-dentist">
                         </Link>
-                        <h3>Dr. Tems</h3>
+                        <h3>Dr. Temesgen</h3>
                     </div>
                     <div className="description__section">
-                        <p>Specializing in pediatric dentistry, Dr. Tems ensures that children have a comfortable and friendly experience during their visits. She has a gentle approach to handling young patients.</p>
+                        <p>Specializing in pediatric dentistry, Dr. Tems ensures that children have a comfortable and friendly experience during their visits. He has a gentle approach to handling young patients.</p>
                     </div>
                 </div>
 

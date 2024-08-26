@@ -12,7 +12,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [success, setSuccess] = useState(null); // null, true (success), false (error)
+    const [success, setSuccess] = useState(null);
 
     const navigate = useNavigate();
 
@@ -61,7 +61,7 @@ const SignUp = () => {
     return (
         <div className='container'>
             <div className='header'>
-                <div className='text'>Sign Up</div>
+                <div className='text'>Welcome, SmileNow!</div>
                 <div className="underline"></div>
             </div>
             <div className='inputs'>
