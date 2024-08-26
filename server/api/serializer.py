@@ -1,7 +1,5 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-# from rest_framework.authentication import BaseAuthentication
-# from rest_framework.exceptions import AuthenticationFailed
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
@@ -59,25 +57,6 @@ class RegisterSerializer(serializers.Serializer):
         if CustomerUser.objects.filter(username=value).exists():
             raise serializers.ValidationError("A user with this username already exists.")
         return value
-
-
-# class DoctorAuthentication(BaseAuthentication):
-#     def authenticate(self, request):
-#         email = request.data.get('email')
-#         password = request.data.get('password')
-
-#         try:
-#             doctor = Doctor.objects.get(user__email=email)
-#             if doctor.user.check_password(password):
-#                 return (doctor.user, None)
-#         except Doctor.DoesNotExist:
-#             raise AuthenticationFailed('Invalid email or password')
-
-#     def get_user(self, user_id):
-#         try:
-#             return CustomerUser.objects.get(pk=user_id)
-#         except CustomerUser.DoesNotExist:
-#             return None
         
 class DoctorLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
@@ -104,22 +83,6 @@ class DoctorLoginSerializer(serializers.Serializer):
 
         return data
     
-    
-# class BookingSerializer(serializers.Serializer):
-#     doctor = serializers.PrimaryKeyRelatedField(queryset=Doctor.objects.all())
-#     service = serializers.CharField(max_length=255)
-#     date = serializers.DateField()
-#     status = serializers.CharField(max_length=20, default='pending')
-
-#     def create(self, validated_data):
-#         request = self.context.get('request')
-#         patient = request.user
-
-#         return BookUser.objects.create(
-#             patient=patient,
-#             **validated_data
-#         )
-
 
 class BookingSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)

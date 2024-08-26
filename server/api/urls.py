@@ -10,6 +10,5 @@ urlpatterns = [
     path('booking/', BookingView.as_view(), name='booking'),
     path('doctor/login/', DoctorLoginView.as_view(), name='doctor-login'),
     path('check-availability/', CheckAvailabilityView.as_view(), name='check-availability'),
-    # path('doctor/<int:doctor_id>/', views.doctor_dashboard, name='doctor-dashboard'),
     path('user-profile/', views.user_profile, name='user-profile'),
 ]

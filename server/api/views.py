@@ -35,7 +35,6 @@ class RegisterView(APIView):
     def get(self, request):
         return Response({'message': 'Please use POST to register a new user'}, status=status.HTTP_200_OK)
 
-# Login View
 class LoginView(APIView):
     permission_classes = [permissions.AllowAny]
 
@@ -61,7 +60,6 @@ class DoctorLoginView(APIView):
             user = serializer.validated_data.get('user')
             doctor = serializer.validated_data.get('doctor')
 
-            # Generate or retrieve token for authenticated user
             token, created = Token.objects.get_or_create(user=user)
 
             return Response({
@@ -74,37 +72,6 @@ class DoctorLoginView(APIView):
             })
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
-# class DoctorLoginView(APIView):
-#     permission_classes = [AllowAny]  
-#     serializer_class = DoctorLoginSerializer
-
-#     def post(self, request, *args, **kwargs):
-#         serializer = self.serializer_class(data=request.data)
-#         if serializer.is_valid(raise_exception=True):
-#             user = serializer.validated_data['user']
-#             doctor = serializer.validated_data['doctor']
-#             token, created = Token.objects.get_or_create(user=user)
-
-#             return Response({
-#                 'token': token.key,
-#                 'doctor_id': doctor.id,
-#                 'email': user.email,
-#                 'specialization': doctor.specialization,
-#             }, status=status.HTTP_200_OK)
-
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# class BookingCreateView(APIView):
-#     def post(self, request):
-#         serializer = BookingSerializer(data=request.data, context={'request': request})
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=HTTP_201_CREATED)
-#         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
         
 class BookingView(APIView):
@@ -122,7 +89,6 @@ class BookingView(APIView):
             print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     def get(self, request):
-        # Get upcoming bookings
         upcoming_bookings = Booking.objects.filter(
             name=request.user,
             date__gte=timezone.now().date(),
@@ -139,8 +105,7 @@ class CheckAvailabilityView(APIView):
             date = serializer.validated_data['date']
             time = serializer.validated_data['time']
             
-            # Check if an appointment already exists
-            appointment_exists = BookUser.objects.filter(
+            appointment_exists = Booking.objects.filter(
                 doctor=doctor,
                 date=date,
                 time=time
