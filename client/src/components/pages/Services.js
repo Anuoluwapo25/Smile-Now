@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import "../Footer.css"
 import Service from '../Service';
 
-function Serives ()  {
+function Services ()  {
     return (
       <>
         <Service/>
@@ -17,5 +17,5 @@ function Serives ()  {
 
 
 
-export default Serives;
+export default Services;
  
