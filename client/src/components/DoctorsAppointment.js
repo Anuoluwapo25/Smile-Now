@@ -15,7 +15,7 @@ export default function DoctorsAppointment() {
     const dummyAppointments = [
       {
         id: 1,
-        patient_name: 'John Doe',
+        patient_name: 'Jan Doe',
         time: new Date().setHours(new Date().getHours() + 1), // 1 hour from now
         service: 'Dental Cleaning',
       },
@@ -76,18 +76,19 @@ export default function DoctorsAppointment() {
     <div className="appointment-actions">
       <FontAwesomeIcon
         icon={faEllipsisV}
+        style={{ color: '#0056b3' }}
         onClick={() => setSelectedAppointment(selectedAppointment === appointment.id ? null : appointment.id)}
       />
       {selectedAppointment === appointment.id && (
         <div className="appointment-menu">
           <button onClick={() => handleAction(appointment.id, 'reschedule')}>
-            <FontAwesomeIcon icon={faSync} /> Reschedule
+            <FontAwesomeIcon icon={faSync} style={{ color: '#0056b3' }} /> Reschedule
           </button>
           <button onClick={() => handleAction(appointment.id, 'cancel')}>
-            <FontAwesomeIcon icon={faTimes} /> Cancel
+            <FontAwesomeIcon icon={faTimes} style={{ color: '#0056b3' }} /> Cancel
           </button>
           <button onClick={() => handleAction(appointment.id, 'done')}>
-            <FontAwesomeIcon icon={faCheck} /> Done
+            <FontAwesomeIcon icon={faCheck} style={{ color: '#0056b3' }} /> Done
           </button>
         </div>
       )}
@@ -119,10 +120,10 @@ export default function DoctorsAppointment() {
         {appointments.map((appointment) => (
           <li key={appointment.id} className="appointment-item">
             <div className="appointment-info">
-              <p><FontAwesomeIcon icon={faUser} /> {appointment.patient_name}</p>
-              <p className="green-text"><FontAwesomeIcon icon={faCalendar} /> {new Date(appointment.time).toLocaleDateString()}</p>
-              <p className="green-text"><FontAwesomeIcon icon={faClock} /> {new Date(appointment.time).toLocaleTimeString()}</p>
-              <p className="green-text"><FontAwesomeIcon icon={faStethoscope} /> {appointment.service}</p>
+              <p><FontAwesomeIcon icon={faUser} style={{ color: '#0056b3' }}/> {appointment.patient_name}</p>
+              <p className="green-text"><FontAwesomeIcon icon={faCalendar} style={{ color: '#0056b3' }} /> {new Date(appointment.time).toLocaleDateString()}</p>
+              <p className="green-text"><FontAwesomeIcon icon={faClock} style={{ color: '#0056b3' }} /> {new Date(appointment.time).toLocaleTimeString()}</p>
+              <p className="green-text"><FontAwesomeIcon icon={faStethoscope} style={{ color: '#0056b3' }} /> {appointment.service}</p>
             </div>
             {renderAppointmentActions(appointment)}
           </li>

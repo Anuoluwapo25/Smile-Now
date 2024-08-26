@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCamera, faEdit, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import './DentistProfile.css'; // Ensure to include this CSS file
+import './DentistProfile.css';
 
 const DentistProfile = () => {
   const [profilePicture, setProfilePicture] = useState(null);
@@ -21,6 +22,14 @@ const DentistProfile = () => {
       reader.readAsDataURL(file);
     }
   };
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate('/dentists/login');
+};
+
+<button onClick={handleLogout}>Logout</button>
 
   const handleEditClick = () => {
     if (isEditing) {
@@ -51,7 +60,7 @@ const DentistProfile = () => {
             style={{ display: 'none' }}
           />
           <label htmlFor="profilePictureInput" className="camera-icon">
-            <FontAwesomeIcon icon={faCamera} size="2x" />
+            <FontAwesomeIcon icon={faCamera} size="2x" style={{ color: 'blue' }} />
           </label>
         </div>
         <div className="profile-info">
@@ -77,13 +86,12 @@ const DentistProfile = () => {
             <FontAwesomeIcon icon={faEdit} />
             {isEditing ? ' Save' : ' Edit'}
           </button>
-          <button className="logout-button" onClick={() => console.log('Logout')}>
-            <FontAwesomeIcon icon={faSignOutAlt} />
+          <button className="logout-button" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt}  />
             Logout
           </button>
         </div>
       </div>
-      {/* Include other sections like appointments here */}
     </div>
   );
 };

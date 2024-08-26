@@ -1,4 +1,3 @@
-/* Container for the appointment section */
 .appointment-container {
   padding: 2rem;
   max-width: 600px;
@@ -9,7 +8,6 @@
   border: 1px solid #ddd;
 }
 
-/* Title styling */
 .appointment-title {
   font-size: 2.5rem;
   text-align: center;
@@ -19,19 +17,16 @@
   letter-spacing: 1px;
 }
 
-/* Form styling */
 .appointment-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Section styling */
 .form-section {
   margin-bottom: 1.5rem;
 }
 
-/* Label styling */
 .form-section label {
   display: block;
   font-weight: 600;
@@ -41,7 +36,6 @@
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* Input icon wrapper */
 .input-icon-wrapper {
   display: flex;
   align-items: center;
@@ -54,10 +48,9 @@
   color: #3498db;
 }
 
-/* Select and input fields styling */
 .form-select,
 .form-input {
-  flex: 1; /* Makes the input take up the remaining space */
+  flex: 1;
   padding: 10px;
   padding-left: 40px;
   border-radius: 8px;
@@ -65,14 +58,12 @@
   font-size: 16px;
 }
 
-/* Error styling for fields */
 .form-select-error,
 .form-input-error {
   border-color: #e74c3c;
   box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
 }
 
-/* Focus state styling for fields */
 .form-select:focus,
 .form-input:focus {
   border-color: #3498db;
@@ -80,7 +71,6 @@
   box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
 }
 
-/* Button styling */
 .form-submit-button {
   background: rgb(5, 138, 240);;
   color: #ffffff;
@@ -94,7 +84,6 @@
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-/* Button hover and active states */
 .form-submit-button:hover {
   background: linear-gradient(135deg, #2980b9, #27ae60);
   transform: scale(1.02);
@@ -105,9 +94,9 @@
   cursor: not-allowed;
 }
 
-/* Success state for the button */
+
 .form-submit-button.form-submit-success {
-  background: #27ae60; /* Green background */
+  background: #05ab4a;
   color: white;
 }
 
@@ -115,7 +104,6 @@
   color: white;
 }
 
-/* Error messages styling */
 .form-error-message,
 .async-error-message,
 .error-message {

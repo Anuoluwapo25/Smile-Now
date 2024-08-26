@@ -1,50 +1,42 @@
 :root {
-    /* Define the primary color variable */
-    --primary: #fff; /* White color */
+    --primary: #fff;
 }
 
-/* Base button styles */
 .btn {
-    padding: 8px 20px; /* Vertical and horizontal padding for button */
-    border-radius: 2px; /* Rounded corners */
-    outline: none; /* Remove default button outline */
-    border: none; /* Remove default button border */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
 
-/* Styles for the primary button */
 .btn--primary {
-    background-color: var(--primary); /* Set background color using the primary color variable */
-    color: #242424; /* Set text color */
-    border: 1px solid var(--primary); /* Border with the primary color */
+    background-color: var(--primary);
+    color: #242424;
+    border: 1px solid var(--primary);
 }
 
-
-/* Styles for the outline button */
 .btn--outline {
-    background-color: transparent; /* Transparent background */
-    color: #fff; /* White text color */
-    padding: 8px 20px; /* Vertical and horizontal padding for button */
-    border: 1px solid var(--primary); /* Border with the primary color */
+    background-color: transparent;
+    color: #fff;
+    padding: 8px 20px;
+    border: 1px solid var(--primary);
     transition: all 0.3s ease-out;
     border-radius: 50px;
 }
 
-/* Medium-sized button */
 .btn-medium {
-    padding: 8px 20px; /* Vertical and horizontal padding for button */
-    font-size: 20px; /* Font size for medium button */
+    padding: 8px 20px;
+    font-size: 20px;
 }
 
-/* Large-sized button */
 .btn-large {
-    padding: 12px 26px; /* Vertical and horizontal padding for button */
-    font-size: 20px; /* Font size for large button */
+    padding: 12px 26px;
+    font-size: 20px;
 }
 
-/* Hover effects for medium and large buttons */
 .btn-medium:hover, .btn-large:hover {
-    background-color: #fff; /* Change background to white on hover */
-    color: #242424; /* Change text color on hover */
-    transition: all 0.3s ease-out; /* Smooth transition for hover effects */
+    background-color: #fff;
+    color: #242424;
+    transition: all 0.3s ease-out;
 }

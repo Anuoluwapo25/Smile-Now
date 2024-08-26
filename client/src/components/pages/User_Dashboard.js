@@ -35,7 +35,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchUserAndBookings();
-    fetchUserProfile(); // Fetch user profile when component mounts
+    fetchUserProfile();
   }, []);
 
   const fetchUserAndBookings = async () => {
@@ -108,9 +108,8 @@ export default function Dashboard() {
   };
 
   const handleLogout = () => {
-    // Clear local storage or any other logout related tasks
     localStorage.clear();
-    navigate('/'); // Redirect to home page
+    navigate('/');
   };
 
   const formatDate = (dateString) => {
