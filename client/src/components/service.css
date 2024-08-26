@@ -83,9 +83,20 @@ h1.heading {
 }
 
 .col__3, .col__2 {
-   flex: 0 0 500px;
+   flex: 1 0 33%;
    margin: 10px;
    height: 400px;
+}
+@media (max-width: 1200px) {
+   .col__3, .col__2 {
+       flex: 1 0 45%;
+   }
+}
+
+@media (max-width: 800px) {
+   .col__3, .col__2 {
+       flex: 1 0 90%;
+   }
 }
 
 .col__2.text-section {
